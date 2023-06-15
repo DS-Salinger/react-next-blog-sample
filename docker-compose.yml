@@ -2,7 +2,7 @@ version: '3'
 
 services:
   react-next-blog-sample:
-    container_name: react-base
+    container_name: ts-react-next
     build:
       context: .
       dockerfile: Dockerfile
