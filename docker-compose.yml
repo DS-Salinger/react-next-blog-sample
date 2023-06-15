@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  react-app:
+    container_name: react-base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    environment:
+      - NODE_DEV=development
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+       - 3000:3000
+    tty: true
+    stdin_open: true
