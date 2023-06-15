@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  react-app:
+  react-next-blog-sample:
     container_name: react-base
     build:
       context: .
