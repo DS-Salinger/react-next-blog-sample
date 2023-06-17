@@ -62,7 +62,7 @@ flycheck_*.el
 /server/
 
 # projectiles files
-.projectile
+v.projectile
 
 # directory configuration
 .dir-locals.el
@@ -70,5 +70,6 @@ flycheck_*.el
 # network security
 /network-security.data
 
-# My app
-app/
+app/react-next-blog-sample/.next
+app/react-next-blog-sample/out
+app/react-next-blog-sample/node_modules
