@@ -70,6 +70,4 @@ v.projectile
 # network security
 /network-security.data
 
-app/react-next-blog-sample/.next
-app/react-next-blog-sample/out
-app/react-next-blog-sample/node_modules
+app/
