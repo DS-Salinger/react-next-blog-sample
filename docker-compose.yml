@@ -13,5 +13,6 @@ services:
       - CHOKIDAR_USEPOLLING=true
     ports:
        - 3000:3000
+       - 9005:9005
     tty: true
     stdin_open: true
