@@ -1,11 +1,18 @@
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
+import DateFormatter from '../components/date-formatter'
+//import MoreStories from '../components/more-stories'
+//import HeroPost from '../components/hero-post'
 import Layout from '../components/layout'
+import CoverImage from '../components/cover-image'
 import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../interfaces/post'
+import Link from 'next/link'
+import BaseFrame from '../components/base-frame'
+import PostPreview from '../components/post-preview'
+import HomeAuthor from '../components/home-author'
+import HomeAbout from '../components/home-about'
 
 
 type IndexProps = {
@@ -16,149 +23,135 @@ type IndexProps = {
   otherPosts: Post[]
 }
 
-
-function PostContainer({ title, thumbnail}:
-                       { title: string, thumbnail: string }): react.FC {
+const DummyPost = (): react.FC => {
   return (
-    <div className="sm:col-span-2 md:col-span-1">
-      <div className="h-36 mx-2 mt-1
-                      bg-mygray bg-opacity-10">
-        {thumbnail}
+    <>
+      <div className="sm:h-1 md:h-64 mx-2 mt-1
+                      bg-mygray bg-opacity-0
+		      text-white">
+      
       </div>
-      <div className="h-16 mt-1 mb-4 mx-2
-                      bg-mygray bg-opacity-10">
-        {title}
+      <div className="sm:h-1 md:h-32 mt-1 mb-4 mx-2
+                      bg-mygray bg-opacity-0">
       </div>
-    </div>
+    </>
   );
 }
 
-function PostsContainer({ title, posts}:
-			{ title:string, posts:Post[] }): react.FC {
+const PostsContainer = ({ title, posts }:
+			{ title:string, posts:Post[] }): react.FC => {
+  const postNum = posts.length;
+
   return (
     <div className="grid sm:grid-cols-2 md:col-span-1">
+      <div className="col-span-2">
         <h2 className="col-span-2 text-white text-3xl my-2 mx-2">
           {title}
 	</h2>
-	<PostContainer title={"a"}
-                       thumbnail={"b"}/>
-	<PostContainer title={"c"}
-                       thumbnail={"d"}/>
-	<PostContainer title={"e"}
-                       thumbnail={"f"}/>
-	<PostContainer title={"g"}
-                       thumbnail={"h"}/>
+        {postNum === 0 &&
+          <>
+	    <DummyPost /> 
+	    <br />
+	    <DummyPost />
+	  </>
+	}
+        {postNum === 1 &&
+          <>
+	    <PostPreview post={posts[0]}/>
+	    <br />
+	    <DummyPost />
+	  </>
+	}
+        {postNum >= 2 &&
+          <>
+	    <PostPreview post={posts[0]}/>
+	    <br />
+	    <PostPreview post={posts[1]}/>
+	  </>
+	}
+        {postNum >= 3 &&
+          <div className="grid place-items-end mx-3">
+	    <a href="#"
+	       className="text-lg text-myorange
+		     hover:underline">
+	      Read more
+	    </a>
+	  </div>
+	}
+    
+      </div>     
     </div>
   )
 }
 
-function StaticContent({ title, contents}:
-		 { title:string, contents:any }): react.FC {
+const StaticContent = ({ title, children }:
+		       { title: string, children: React.ReactNode })
+		    : react.FC => {
   return (
     <>
         <h2 className="col-span-2 text-white text-3xl
 	               mx-2 mb-2">
           {title}
 	</h2>
-  	<div className="col-span-2 mx-2 mb-3 h-44
+  	<div className="col-span-2 mx-2 mb-8 h-[21rem] text-white
 			bg-mygray bg-opacity-10">
-	  a
+	  {children}
 	</div>
     </>
   )
 }
 
-function MainMenu(): react.FC {
-  return (
-    <div className="bg-mygray bg-opacity-30 text-white">
-      <div className="mx-8 mt-8 text-3xl">
-	Menu
-      </div>
-      <div className="mx-12 mt-4 text-2xl">
-	Author
-      </div>
-      <div className="mx-12 mt-4 text-2xl">
-	New
-      </div>
-      <div className="mx-12 mt-4 text-2xl">
-	DS
-      </div>
-      <div className="mx-12 mt-4 text-2xl">
-	Arch
-      </div>
-      <div className="mx-12 mt-4 text-2xl">
-	NLP
-      </div>
-      <div className="mx-12 mt-4 text-2xl">
-	Other
-      </div>
-    </div>
-  );
-}
 
 
-function MainContents(){
+const MainContents = ({ newPosts,
+			dsPosts,
+			archPosts,
+			nlpPosts,
+			otherPosts}: IndexProps): react.FC => {
   return (
     <>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 mx-8 gap-8">
 	<div className="grid grid-cols-2 mt-2">
-	  <StaticContent title={"Author"} />
+	  <StaticContent title={"About"} children={<HomeAbout />}/>
 	  <br />
-	  <StaticContent title={"About"} />
+	  <StaticContent title={"Author"} children={<HomeAuthor />} />
 	</div>
 	
-	<PostsContainer title={"New"} />
+	<PostsContainer title={"New"}
+			posts={newPosts}/>
       </div>
       
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-2 mx-8">
-	<PostsContainer title={"DS"}/>
-	<PostsContainer title={"Arch"} />
+	<PostsContainer title={"DS"}
+			posts={dsPosts}/>
+	<PostsContainer title={"Arch"}
+			posts={archPosts}/>
       </div>
       
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-2 mx-8">
-	<PostsContainer title={"NLP"} />
-	<PostsContainer title={"Other"} />
+	<PostsContainer title={"NLP"}
+			posts={nlpPosts}/>
+	<PostsContainer title={"Other"}
+			posts={otherPosts}/>
       </div>
     </>
   );
 }
 
-export default function Index({ newPosts,
-				dsPosts,
-				archPosts,
-				nlpPosts,
-				otherPosts }: IndexProps) {
-  const heroPost = newPosts[0]
-  const morePosts = newPosts.slice(1)
-  
+const Index = (
+  { newPosts, dsPosts, archPosts, nlpPosts, otherPosts}: IndexProps
+): react.FC => {
+  const contents = <MainContents className=""
+                                 newPosts={newPosts}
+                                 dsPosts={dsPosts}
+	                         archPosts={archPosts}
+                         	 nlpPosts={nlpPosts}
+	                         otherPosts={otherPosts}/>;
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>さりんじゃー's Tech Blog</title>
-        </Head>
-
-        <Container>
-	  <div className="grid grid-cols-4">
-	    <div className="hidden lg:grid lg:col-span-1">
-	      <MainMenu className=""/>
-	    </div>
-	    
-	    <div className="col-span-4 lg:col-span-3">
-	      <h1 className="text-white
-			     sm:text-5xl md:text-7xl my-4 mx-6">
-		さりんじゃー's Tech Blog
-	      </h1>
-	      
-	      <MainContents className="" />
-	    </div>
-	  </div>
-	  {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
-        </Container>
-      </Layout>
-    </>
-  )
+    <BaseFrame children={contents} />	
+  );
 }
+
 
 export const getStaticProps = async () => {
   const newPosts = getAllPosts([
@@ -211,9 +204,11 @@ export const getStaticProps = async () => {
     props: {
       newPosts: newPosts,
       dsPosts: dsPosts,
-      archPosts: archPosts,
-      nlpPosts: nlpPosts,
-      otherPosts: otherPosts,
+      archPosts: archPosts.slice(2),
+      nlpPosts: [],//nlpPosts,
+      otherPosts: otherPosts.slice(1),
     },
   }
 }
+
+export default Index;

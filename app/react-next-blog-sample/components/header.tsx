@@ -6,10 +6,9 @@ export default function Header(
   { screenSize: ScreenSize }): React.FC {
 
   return (
-    <header className="h-16
+    <header className="h-12
 		       bg-myblack
 		       text-white">
-      screen size={screenSize}
     </header>
   );
 }
