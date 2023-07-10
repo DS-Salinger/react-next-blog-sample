@@ -1,6 +1,6 @@
 import BaseFrame from '../components/base-frame'
 import PostPage from '../components/post-page'
-import { getAllPosts } from '../lib/api'
+import { getTargetTagPosts } from '../lib/api'
 
 const NLPPostsPage = ({ nlpPosts }): React.FC => {
   const contents = <PostPage title={"NLP"} posts={nlpPosts} />;
@@ -12,14 +12,15 @@ const NLPPostsPage = ({ nlpPosts }): React.FC => {
 }
 
 export const getStaticProps = async () => {
-  const nlpPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const nlpPosts = getTargetTagPosts(
+    "NLP",
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
   return {
     props: {

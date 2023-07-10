@@ -10,10 +10,10 @@ const MainMenu = (): react.FC => {
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
-	<Link href="/author"
-	      className="hover:underline">
-	  Author
-	</Link>
+	{/* <Link href="/author"
+	    className="hover:underline">
+	    Author
+	    </Link> */}
       </div>
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/new"
@@ -24,7 +24,7 @@ const MainMenu = (): react.FC => {
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/ds"
 	      className="hover:underline">
-	  DS
+	  Data Science
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
@@ -36,7 +36,7 @@ const MainMenu = (): react.FC => {
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/arch"
 	      className="hover:underline">
-	  Arch
+	  Architecture
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">

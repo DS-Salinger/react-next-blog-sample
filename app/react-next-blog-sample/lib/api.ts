@@ -38,10 +38,22 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 }
 
 export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs()
+  const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-  return posts
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
+  return posts;
+}
+
+export function getTargetTagPosts(tag: string,
+				  fields: string[]) {
+  const slugs = getPostSlugs();
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug, fields))
+    .filter((post) => post.tags[0] === tag)
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
+  return posts;
 }

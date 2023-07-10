@@ -10,9 +10,9 @@ const HomeAbout = (): React.FC => {
 	<h2 className="text-xl">コンテンツ</h2>
 	<p className="p-1">　主に以下のようなトピックに関しての記事をまとめています。</p>
 	<ul className="list-disc ml-6">
-	  <li>データ分析に関するお話 (DS)</li>
+	  <li>データ分析に関するお話 (Data Science)</li>
 	  <li>自然言語処理に関するお話 (NLP)</li>
-	  <li>建築・建設×ITに関するお話 (Arch)</li>
+	  <li>建築・建設×ITに関するお話(Architecture)</li>
 	  <li>インフラ・環境構築やフロントエンド他 (Other)</li>
 	</ul>
       </div>

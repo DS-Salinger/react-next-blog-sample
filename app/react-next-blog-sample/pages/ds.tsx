@@ -1,9 +1,10 @@
 import BaseFrame from '../components/base-frame'
 import PostPage from '../components/post-page'
-import { getAllPosts } from '../lib/api'
+import { getTargetTagPosts } from '../lib/api'
 
 const DSPostsPage = ({ dsPosts }): React.FC => {
-  const contents = <PostPage title={"DS"} posts={dsPosts} />;
+  const contents = <PostPage title={"Data Science"}
+			     posts={dsPosts} />;
   return (
     <>
       <BaseFrame children={contents} />
@@ -12,14 +13,15 @@ const DSPostsPage = ({ dsPosts }): React.FC => {
 }
 
 export const getStaticProps = async () => {
-  const dsPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const dsPosts = getTargetTagPosts(
+    "Data Science",
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
   return {
     props: {

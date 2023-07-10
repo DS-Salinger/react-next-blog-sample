@@ -17,9 +17,6 @@ const PostPreview = ({ post }: { post: Post })
           <CoverImage slug={post.slug}
 		      title={post.title}
 		      src={post.coverImage}/>
-	  {/* <p className="text-lg text-white leading-relaxed mb-4">
-	      {post.excerpt}
-	      </p> */}
 	</div>
 
 	<div className="h-32 mt-1 mb-4 mx-2

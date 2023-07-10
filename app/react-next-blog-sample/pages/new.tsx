@@ -3,7 +3,8 @@ import PostPage from '../components/post-page'
 import { getAllPosts } from '../lib/api'
 
 const NewPostsPage = ({ newPosts }): React.FC => {
-  const contents = <PostPage title={"New"} posts={newPosts} />;
+  const contents = <PostPage title={"New"}
+			     posts={newPosts} />;
   return (
     <>
       <BaseFrame children={contents} />
@@ -12,14 +13,14 @@ const NewPostsPage = ({ newPosts }): React.FC => {
 }
 
 export const getStaticProps = async () => {
-  const newPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const newPosts = getAllPosts(
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
   return {
     props: {

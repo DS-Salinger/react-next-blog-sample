@@ -1,10 +1,8 @@
 import Container from '../components/container'
 import DateFormatter from '../components/date-formatter'
-//import MoreStories from '../components/more-stories'
-//import HeroPost from '../components/hero-post'
 import Layout from '../components/layout'
 import CoverImage from '../components/cover-image'
-import { getAllPosts } from '../lib/api'
+import { getAllPosts, getTargetTagPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../interfaces/post'
@@ -38,8 +36,8 @@ const DummyPost = (): react.FC => {
   );
 }
 
-const PostsContainer = ({ title, posts }:
-			{ title:string, posts:Post[] }): react.FC => {
+const PostsContainer = ({ title, posts, link }:
+			{ title:string, posts:Post[], link: string}): react.FC => {
   const postNum = posts.length;
 
   return (
@@ -71,11 +69,11 @@ const PostsContainer = ({ title, posts }:
 	}
         {postNum >= 3 &&
           <div className="grid place-items-end mx-3">
-	    <a href="#"
+	    <Link href={link}
 	       className="text-lg text-myorange
 		     hover:underline">
 	      Read more
-	    </a>
+	    </Link>
 	  </div>
 	}
     
@@ -118,21 +116,25 @@ const MainContents = ({ newPosts,
 	</div>
 	
 	<PostsContainer title={"New"}
-			posts={newPosts}/>
+			posts={newPosts}
+			link={"/new"}/>
       </div>
       
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-2 mx-8">
 	<PostsContainer title={"DS"}
-			posts={dsPosts}/>
+			posts={dsPosts}
+			link={"/ds"}/>
 	<PostsContainer title={"Arch"}
-			posts={archPosts}/>
+			posts={archPosts}
+			link={"/arch"}/>
       </div>
       
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-2 mx-8">
 	<PostsContainer title={"NLP"}
 			posts={nlpPosts}/>
 	<PostsContainer title={"Other"}
-			posts={otherPosts}/>
+			posts={otherPosts}
+			link={"/other"}/>
       </div>
     </>
   );
@@ -154,59 +156,63 @@ const Index = (
 
 
 export const getStaticProps = async () => {
-  const newPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const newPosts = getAllPosts(
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
-  const dsPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const dsPosts = getTargetTagPosts(
+    'Data Science',
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
-  const archPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const archPosts = getTargetTagPosts(
+    'Architecture',
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
-  const nlpPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const nlpPosts = getTargetTagPosts(
+    'NLP',
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
-  const otherPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const otherPosts = getTargetTagPosts(
+    'Other',
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
 
   return {
     props: {
       newPosts: newPosts,
       dsPosts: dsPosts,
-      archPosts: archPosts.slice(2),
-      nlpPosts: [],//nlpPosts,
-      otherPosts: otherPosts.slice(1),
+      archPosts: archPosts,
+      nlpPosts: nlpPosts,
+      otherPosts: otherPosts,
     },
   }
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Post from '../interface/post'
-import PostPreview from '../components/post-preview'
+import PaginationPosts from '../components/pagination'
 
 const PostPage = ({ title, posts }:
 	       { title: string, posts: Post[] }): React.FC => {
@@ -15,22 +15,28 @@ const PostPage = ({ title, posts }:
   );
 }
 
-const PostsContainer = ({ title, posts }:
-			{ title: string, posts: Post[] }): React.FC => {
-  const postPreviews = posts.map(p => <PostPreview post={p} key={p.title}/>);
+
+const PostsContainer = (
+  { title, posts }:{ title: string, posts: Post[] }
+): React.FC => {
 
   return (
+    <>
       <div className="grid sm:grid-cols-2 md:col-span-1">
 	<div className="col-span-2">
-          <h2 className="col-span-2 text-white text-3xl my-2 mx-2 h-fit">
+          <h2 className="col-span-2 text-white
+			 text-3xl my-2 mx-2 h-fit">
             <Link href="/"
 		  className="hover:underline">Home
-	    </Link> / {title}
+	    </Link> / { title }
 	  </h2>
 	</div>
-
-	{postPreviews}
       </div>
+
+      <div>
+	<PaginationPosts posts={posts} />
+      </div>
+    </>
   );
 }
 

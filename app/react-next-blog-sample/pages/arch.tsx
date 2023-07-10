@@ -1,9 +1,10 @@
 import BaseFrame from '../components/base-frame'
 import PostPage from '../components/post-page'
-import { getAllPosts } from '../lib/api'
+import { getTargetTagPosts } from '../lib/api'
 
 const ArchPostsPage = ({ archPosts }): React.FC => {
-  const contents = <PostPage title={"Arch"} posts={archPosts} />;
+  const contents = <PostPage title={"Architecture"}
+			     posts={archPosts} />;
   return (
     <>
       <BaseFrame children={contents} />
@@ -12,14 +13,15 @@ const ArchPostsPage = ({ archPosts }): React.FC => {
 }
 
 export const getStaticProps = async () => {
-  const archPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const archPosts = getTargetTagPosts(
+    "Architecture",
+    ['title',
+     'date',
+     'slug',
+     'author',
+     'coverImage',
+     'tags']
+  )
 
   return {
     props: {

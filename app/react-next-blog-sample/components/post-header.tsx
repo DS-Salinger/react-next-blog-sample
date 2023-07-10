@@ -2,6 +2,7 @@ import Avatar from './avatar'
 import DateFormatter from './date-formatter'
 import CoverImage from './cover-image'
 import PostTitle from './post-title'
+import Link from 'next/link'
 import type Author from '../interfaces/author'
 
 type Props = {
@@ -9,27 +10,73 @@ type Props = {
   coverImage: string
   date: string
   author: Author
+  tags: string[]
 }
 
-const PostHeader = ({ title, coverImage, date, author }: Props) => {
+const convertTagToPath = (tag: string): string => {
+  switch (tag) {
+    case "Data Science":
+      return "ds";
+    case "NLP":
+      return "nlp";
+    case "Architecture":
+      return "arch";
+    case "Other":
+      return "other";
+    default:
+      return "other";
+  }
+}
+
+const PostHeader = ({ title, coverImage,
+		      date, author, tags }: Props) => {
+
+  const tagButtons = tags.map((tag) =>
+    <button className="bg-mygray/20 text-white
+		       text-lg
+		       rounded px-4 py-2"
+	    disabled
+	    key={title}>
+      {tag}
+    </button>
+  )
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} picture={author.picture} />
-      </div>
-      <div className="mb-8 md:mb-16 sm:mx-0">
+    <div className="grid grid-cols-2
+		    sm:w-[32rem] md:w-[48rem]
+		    p-2">
+      <div className="col-span-2 
+		      justify-self-center place-item-center
+		      pt-4 pb-2 mb-8
+		      sm:w-[28rem] md:w-[40rem]">
         <CoverImage title={title} src={coverImage} />
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
-          <Avatar name={author.name} picture={author.picture} />
-        </div>
-        <div className="mb-6 text-lg">
-          <DateFormatter dateString={date} />
-        </div>
+      <div className="col-span-2 text-xl">
+	<Link href="/"
+	      className="hover:underline">Home</Link>
+	&nbsp; / &nbsp; 
+	<Link href={"/" + convertTagToPath(tags[0])}
+	      className="hover:underline">{tags[0]}</Link>
       </div>
-    </>
+      
+      <div className="grid col-span-2
+		      pt-2 ">
+	<PostTitle>{title}</PostTitle>
+      </div>
+      
+      <div className="flex col-span-2 pb-10 gap-x-2">
+	{tagButtons}
+      </div>
+
+      <div className="mb-6 text-lg col-span-1
+		      p-2">
+        <Avatar name={author.name} picture={author.picture} />
+      </div>
+      <div className="flex mb-6 p-6
+		      text-xl col-span-1
+		      items-center justify-end">
+        <DateFormatter dateString={date} />
+      </div>
+    </div>
   )
 }
 

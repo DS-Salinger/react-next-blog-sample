@@ -19,17 +19,17 @@ const BaseFrame = ({ children }: Props) => {
         <Container>
 	  <div className="grid grid-cols-4">
 	    <div className="hidden lg:grid lg:col-span-1">
-	      <MainMenu className=""/>
+	      <MainMenu />
 	    </div>
 	    
 	    <div className="col-span-4 lg:col-span-3">
 	      <h1 className="text-white
-			     sm:text-5xl md:text-7xl my-4 mx-6">
+			     text-6xl my-4 sm:mx-3 md:mx-6">
 		<span className="bg-gradient-to-r
 				 flex
 				 from-myred via-myorange to-myyellow
-				 sm:bg-[length:64%_3px]
-				 md:bg-[length:70%_5px]
+				 sm:bg-[length:68%_3px]
+				 md:bg-[length:43%_3px]
 				 bg-no-repeat bg-left-bottom">
 		  さりんじゃー's Tech Blog
 		</span>
