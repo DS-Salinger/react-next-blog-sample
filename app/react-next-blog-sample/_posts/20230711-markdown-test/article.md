@@ -1,16 +1,17 @@
 ---
-title: 'Hello, World!: Zenn記法テスト'
-excerpt: 'Zenn記法のテストです'
-coverImage: '/assets/blog/hello-world/cover.jpg'
+title: '自作ブログでの Markdown 記法テスト'
 date: '2023-07-04 05:35:07'
 author:
   name: さりんじゃー
   picture: '/assets/author.png'
+coverImage:
+  url: '@@image@@/markdown-icon.png'
+  width: 150
+  height: 150
 ogImage:
-  url: '/assets/blog/hello-world/cover.jpg'
+  url: '@@image@@/markdown-icon.png'
 tags:
   - 'Other'
-  - 'Frontend'
 ---
 
 # 見出し

@@ -8,10 +8,12 @@ import remarkEmoji from 'remark-emoji'
 import remarkCodeTitles from 'remark-code-titles'
 import rehypeStringify from 'rehype-stringify'
 import rehypeHighlight from 'rehype-highlight'
-//import remarkMermaid from 'remark-mermaid'
 import rehypeMathjax from 'rehype-mathjax'
 
-export default async function markdownToHtml(markdown: string) {
+export default async function markdownToHtml(
+  markdown: string,
+  slug: string
+) {
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -24,7 +26,6 @@ export default async function markdownToHtml(markdown: string) {
     .use(rehypeStringify)
     .use(rehypeMathjax)
     .process(markdown);
-  
 
   return result.toString();
 }

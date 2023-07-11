@@ -16,7 +16,9 @@ const PostPreview = ({ post }: { post: Post })
 			bg-mygray bg-opacity-10">
           <CoverImage slug={post.slug}
 		      title={post.title}
-		      src={post.coverImage}/>
+		      src={post.coverImage.url}
+		      width={post.coverImage.width}
+		      height={post.coverImage.height}/>
 	</div>
 
 	<div className="h-32 mt-1 mb-4 mx-2

@@ -10,7 +10,12 @@ export function getPostSlugs() {
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
   const fullPath = join(postsDirectory, `${slug}/article.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const fileContents = fs
+    .readFileSync(fullPath, 'utf8')
+    .replace(
+      /@@image@@/g,
+      `/assets/images/posts/${slug}`
+    )
   const { data, content } = matter(fileContents)
 
   type Items = {
@@ -27,7 +32,6 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     if (field === 'content') {
       items[field] = content
     }
-
     if (typeof data[field] !== 'undefined') {
       items[field] = data[field]
     }

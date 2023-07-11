@@ -5,21 +5,22 @@ import Image from 'next/image'
 type Props = {
   title: string
   src: string
+  width: number
+  height: number
   slug?: string
 }
 
-const CoverImage = ({ title, src, slug }: Props) => {
-  const image = (
-    <img
-      src={src}
-      alt={`Cover Image for ${title}`}
-      className={cn('shadow-sm w-full', {
-        'hover:shadow-lg transition-shadow duration-200': slug,
-      })}
-      width={300}
-      height={200}
-    />
-  )
+const CoverImage = (
+  { title, src, width=300, height=200, slug }: Props
+) => {
+  const image = <Image
+    src={src}
+    width={width}
+    height={height}
+    alt={`Cover Image for ${title}`}
+    className={cn({'hover:shadow-lg': slug})}
+  />;
+  
   return (
     <div>
       {slug ? (

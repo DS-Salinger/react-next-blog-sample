@@ -1,18 +1,16 @@
-import { useRouter } from 'next/router'
+import { useEffect } from "react"
+import Head from 'next/head'
 import ErrorPage from 'next/error'
+import { useRouter } from 'next/router'
+import { getPostBySlug, getAllPosts } from '../../lib/api'
+import markdownToHtml from '../../lib/markdownToHtml'
+import type PostType from '../../interfaces/post'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
 import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
-import Head from 'next/head'
-import { CMS_NAME } from '../../lib/constants'
-import markdownToHtml from '../../lib/markdownToHtml'
-import type PostType from '../../interfaces/post'
-import { useEffect } from "react"
 import BaseFrame from '../../components/base-frame'
-
 
 type Props = {
   post: PostType
@@ -69,18 +67,17 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-    'tags'
-  ])
+  const post = getPostBySlug(
+    params.slug,
+    ['title', 'date', 'slug',
+     'author', 'content', 'ogImage',
+     'coverImage', 'tags']
+  )
 
-  const content = await markdownToHtml(post.content || '');
+  const content = await markdownToHtml(
+    post.content || '',
+    params.slug
+  );
 
   return {
     props: {

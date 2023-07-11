@@ -7,7 +7,11 @@ import type Author from '../interfaces/author'
 
 type Props = {
   title: string
-  coverImage: string
+  coverImage: {
+    url: string,
+    width: number,
+    height: number
+  }
   date: string
   author: Author
   tags: string[]
@@ -28,9 +32,9 @@ const convertTagToPath = (tag: string): string => {
   }
 }
 
-const PostHeader = ({ title, coverImage,
-		      date, author, tags }: Props) => {
-
+const PostHeader = (
+  { title, coverImage, date, author, tags }: Props
+) => {
   const tagButtons = tags.map((tag) =>
     <button className="bg-mygray/20 text-white
 		       text-lg rounded px-4 py-2
@@ -40,15 +44,18 @@ const PostHeader = ({ title, coverImage,
       {tag}
     </button>
   )
+
   return (
     <div className="grid grid-cols-2
 		    sm:w-full md:w-[50rem]
 		    p-2">
       <div className="col-span-2 
 		      justify-self-center place-item-center
-		      pt-4 pb-2 mb-8
-		      sm:w-[32rem] md:w-[40rem]">
-        <CoverImage title={title} src={coverImage} />
+		      pt-4 pb-2 mb-8">
+        <CoverImage title={title}
+		    src={coverImage.url}
+		    width={coverImage.width}
+		    height={coverImage.height}/>
       </div>
       <div className="col-span-2 text-xl">
 	<Link href="/"
