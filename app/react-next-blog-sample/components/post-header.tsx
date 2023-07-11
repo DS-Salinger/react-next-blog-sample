@@ -33,8 +33,8 @@ const PostHeader = ({ title, coverImage,
 
   const tagButtons = tags.map((tag) =>
     <button className="bg-mygray/20 text-white
-		       text-lg
-		       rounded px-4 py-2"
+		       text-lg rounded px-4 py-2
+		       shadow-md"
 	    disabled
 	    key={title}>
       {tag}
@@ -42,12 +42,12 @@ const PostHeader = ({ title, coverImage,
   )
   return (
     <div className="grid grid-cols-2
-		    sm:w-[32rem] md:w-[48rem]
+		    sm:w-full md:w-[50rem]
 		    p-2">
       <div className="col-span-2 
 		      justify-self-center place-item-center
 		      pt-4 pb-2 mb-8
-		      sm:w-[28rem] md:w-[40rem]">
+		      sm:w-[32rem] md:w-[40rem]">
         <CoverImage title={title} src={coverImage} />
       </div>
       <div className="col-span-2 text-xl">
@@ -58,20 +58,18 @@ const PostHeader = ({ title, coverImage,
 	      className="hover:underline">{tags[0]}</Link>
       </div>
       
-      <div className="grid col-span-2
-		      pt-2 ">
+      <div className="grid col-span-2 -mb-4">
 	<PostTitle>{title}</PostTitle>
       </div>
       
-      <div className="flex col-span-2 pb-10 gap-x-2">
+      <div className="flex col-span-2 pb-6 gap-x-2">
 	{tagButtons}
       </div>
 
-      <div className="mb-6 text-lg col-span-1
-		      p-2">
+      <div className="mb-6 text-lg col-span-1 p-2">
         <Avatar name={author.name} picture={author.picture} />
       </div>
-      <div className="flex mb-6 p-6
+      <div className="flex pb-6 m-2
 		      text-xl col-span-1
 		      items-center justify-end">
         <DateFormatter dateString={date} />

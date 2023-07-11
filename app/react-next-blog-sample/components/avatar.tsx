@@ -10,7 +10,7 @@ const Avatar = ({ name, picture }: Props) => {
 	   className="w-24 h-24
 	       rounded-full mr-4"
 	   alt={name} />
-      <div className="text-2xl font-bold">{name}</div>
+      <div className="text-xl font-bold">{name}</div>
     </div>
   )
 }

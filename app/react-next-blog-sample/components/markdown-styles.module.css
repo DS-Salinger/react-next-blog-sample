@@ -8,39 +8,36 @@
 }
 
 .markdown h1 {
-    @apply text-4xl mt-12 mb-6 leading-snug
-    underline decoration-myred decoration-2
-    underline-offset-8;
+    @apply text-3xl mt-16 mb-8 leading-snug
+    border-l-4 pl-4 pb-1 border-myred;
 }
 
 .markdown h2 {
-    @apply text-3xl mt-12 mb-6 leading-snug
-    underline decoration-myorange decoration-2
-    underline-offset-8;
+    @apply text-2xl mt-14 mb-8 leading-snug
+    border-l-4 pl-4 pb-1 border-myorange;
 }
 
 .markdown h3 {
-    @apply text-2xl mt-8 mb-6 leading-snug
-    underline decoration-myyellow decoration-2
-    underline-offset-8;
+    @apply text-xl mt-12 mb-8 leading-snug
+    border-l-2 pl-4 pb-1 border-myyellow;
 }
 
 .markdown h4 {
-    @apply text-xl mt-8 mb-6 leading-snug
-    underline decoration-mygray decoration-2
-    underline-offset-8;
+    @apply text-lg mt-10 mb-8 leading-snug
+    border-l-2 pl-4 pb-1 border-mygray;
 }
+
 
 .markdown code {
     @apply bg-black;
 }
 
 .markdown p > code {
-    @apply bg-black mx-2 px-1;
+    @apply bg-black mx-2 px-1 shadow-md;
 }
 
 .markdown pre {
-    @apply bg-black p-4;
+    @apply bg-black p-4 shadow-md;
 }
 
 .markdown ol {
@@ -48,6 +45,10 @@
 }
 .markdown ul {
     @apply list-disc ml-8 my-4;
+}
+
+.markdown img {
+    @apply shadow-md;
 }
 
 .markdown ul ul,
@@ -73,7 +74,7 @@
 }
 
 .markdown table {
-    @apply table-auto p-2 mt-4;
+    @apply table-auto p-2 mt-4 shadow-md;
 }
 
 .markdown th {
@@ -89,7 +90,7 @@
 }
 
 .markdown blockquote {
-    @apply border-l-2 pl-4 bg-mygray/10 border-myyellow;
+    @apply px-3 bg-mygray/10 text-lg drop-shadow-md;
 }
 
 .markdown blockquote > p {

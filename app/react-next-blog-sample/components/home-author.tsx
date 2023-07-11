@@ -42,7 +42,7 @@ const HomeAuthor = (): React.FC => {
 	    </tr>
 	    <tr>
 	      <td className="w-20 py-0.5">システム開発</td>
-	      <td>主にPython</td>
+	      <td>主にPython, 最近 JS / TS 学習中</td>
 	    </tr>
 	    <tr>
 	      <td className="w-20 py-0.5">インフラ</td>

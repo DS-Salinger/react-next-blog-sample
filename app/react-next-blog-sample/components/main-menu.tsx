@@ -2,7 +2,10 @@ import Link from 'next/link'
 
 const MainMenu = (): react.FC => {
   return (
-    <div className="bg-mygray bg-opacity-30 text-white">
+    <div className="bg-mygray bg-opacity-30 text-white
+		    h-[calc(100vh-62px)]
+		    overflow-auto rounded-2xl
+		    shadow-lg sticky top-10">
       <div className="mx-8 mt-8 text-3xl">
 	<Link href="/"
 	      className="hover:underline">
