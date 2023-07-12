@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  react-next-blog-sample:
-    container_name: ts-react-next
+  salinger-tech-blog:
+    container_name: react-next-ts
     build:
       context: .
       dockerfile: Dockerfile

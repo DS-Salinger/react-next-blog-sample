@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* remark-flexible-code-title */
+div.remark-code-title {
+    @apply flex bg-mygray/20 w-min px-3 py-1 text-base;
+}
+
+/* remark-gfm task list */
+li.task-list-item {
+    @apply list-none;
+}
+
+li.task-list-item > input {
+    @apply text-myorange bg-white mr-2;
+}

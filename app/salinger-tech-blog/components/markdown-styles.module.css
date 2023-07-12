@@ -1,12 +1,18 @@
+/* 色は　tailwind.config.js側で別途設定 */
+/*   myred, myorange, mygray など       */
+
+/* 全体の文字サイズ */
 .markdown {
     @apply text-lg leading-relaxed;
 }
 
+/* 各要素の上下の幅調整 */
 .markdown p,
 .markdown blockquote {
     @apply my-6;
 }
 
+/* 見出しのサイズ、位置、色設定 */
 .markdown h1 {
     @apply text-3xl mt-16 mb-8 leading-snug
     border-l-4 pl-4 pb-1 border-myred;
@@ -27,7 +33,7 @@
     border-l-2 pl-4 pb-1 border-mygray;
 }
 
-
+/* コードブロック関連 */
 .markdown code {
     @apply bg-black;
 }
@@ -40,15 +46,17 @@
     @apply bg-black p-4 shadow-md;
 }
 
+/* 画像 */
+.markdown img {
+    @apply mx-auto shadow-md;
+}
+
+/* リスト (3階層まで設定) */
 .markdown ol {
     @apply list-decimal ml-8 my-4;
 }
 .markdown ul {
     @apply list-disc ml-8 my-4;
-}
-
-.markdown img {
-    @apply shadow-md;
 }
 
 .markdown ul ul,
@@ -69,10 +77,12 @@
     @apply list-decimal ml-8 my-0;
 }
 
+/* リンク */
 .markdown a {
     @apply text-myorange hover:underline mx-1;
 }
 
+/* テーブル */
 .markdown table {
     @apply table-auto p-2 mt-4 shadow-md;
 }
@@ -85,10 +95,12 @@
     @apply px-6 py-2 bg-mygray/20 border border-mygray/10;
 }
 
+/* インラインの数式 */
 .markdown mjx-container > svg {
     @apply inline px-1;
 }
 
+/* 引用 */
 .markdown blockquote {
     @apply px-3 bg-mygray/10 text-lg drop-shadow-md;
 }
@@ -97,6 +109,9 @@
     @apply break-words whitespace-pre-wrap;
 }
 
+/* 水平線 */
 .markdown hr {
     @apply border-mygray/20 my-8;
 }
+
+
