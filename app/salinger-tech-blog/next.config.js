@@ -9,7 +9,7 @@ module.exports = {
         patterns: [
           {
             context: '_posts',
-            from: '**/*.{jpg,png}',
+            from: '**/*.{jpg,png,svg}',
             to: resolve(__dirname, 'public/assets/images/posts'),
           },
         ],

@@ -27,8 +27,8 @@ const PostsContainer = (
   return (
     <div className="grid sm:grid-cols-2 md:col-span-1">
       <div className="col-span-2">
-        <h2 className="col-span-2 text-white
-		       text-3xl my-2 mx-2">
+        <h2 className="col-span-2 text-white mb-6
+		       text-3xl mx-2">
           {title}
 	</h2>
         {postNum === 0 &&
@@ -69,22 +69,24 @@ const PostsContainer = (
 
 type StaticContentProps = {
   title: string,
+  height: number,
   children: React.ReactNode
 }
 
 const StaticContent = (
-  { title, children }: StaticContentProps
+  { title, height, children }: StaticContentProps
 ) : react.FC => {
+  const heightString = "h-[" + height.toString() + "rem]"
   return (
     <>
-      <h2 className="col-span-2 
-		     text-white text-3xl
-	               mx-2 mb-2">
+      <h2 className="col-span-2 sm:mb-0 md:-mb-5 mt-0
+		     text-white text-3xl mx-2">
         {title}
       </h2>
-      <div className="col-span-2 
-		      mx-2 mb-8 h-[21rem] text-white
-		      bg-mygray bg-opacity-10">
+      
+      <div className={`col-span-2 mx-2 sm:my-6 md:my-0
+                       text-white bg-mygray bg-opacity-10
+                       ${heightString}`}>
 	{children}
       </div>
     </>
@@ -104,14 +106,16 @@ const MainContents = (
 ): react.FC => {
   return (
     <>
-      <div className="grid
+      <div className="grid mt-10 mb-4
 		      sm:grid-cols-1 md:grid-cols-2
 		      mx-8 gap-8">
-	<div className="grid grid-cols-2 mt-2">
+	<div className="grid grid-cols-2">
 	  <StaticContent title={"About"}
+			 height={21}
 			 children={<HomeAbout />}/>
-	  <br />
+
 	  <StaticContent title={"Author"}
+			 height={24}
 			 children={<HomeAuthor />} />
 	</div>
 	
@@ -122,7 +126,7 @@ const MainContents = (
       
       <div className="grid
 		      sm:grid-cols-1 md:grid-cols-2
-		      gap-8 mb-2 mx-8">
+		      gap-8 mb-4 mx-8">
 	<PostsContainer title={"DS"}
 			posts={dsPosts}
 			link={"/ds"}/>

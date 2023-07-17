@@ -8,6 +8,7 @@ import remarkCodeTitles from 'remark-flexible-code-titles'
 import rehypeStringify from 'rehype-stringify'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeMathjax from 'rehype-mathjax'
+import langLisp from 'highlight.js/lib/languages/lisp'
 
 
 export default async function markdownToHtml(
@@ -20,9 +21,13 @@ export default async function markdownToHtml(
     .use(remarkEmoji)
     .use(remarkCodeTitles)
     .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .use(rehypeHighlight)
+    .use(remarkRehype,
+	 { allowDangerousHtml: true })
+    .use(rehypeStringify,
+	 { allowDangerousHtml: true })
+    .use(rehypeHighlight,
+	 { ignoreMissing: true,
+	   languages: {lisp: langLisp }})
     .use(rehypeMathjax)
 
     .process(markdown);
