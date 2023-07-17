@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const HomeAuthor = (): React.FC => {
   return(
@@ -10,7 +11,12 @@ const HomeAuthor = (): React.FC => {
 
       <div className="col-span-2">
    	<div className="mx-2">
-          <h2 className="text-2xl">さりんじゃー</h2><p className="text-base align-botom">Twitter: @salinger001101</p>
+          <h2 className="text-2xl">さりんじゃー</h2>
+	  <p className="text-base align-botom">Twitter: &nbsp;
+	    <Link className="text-myorange" href="https://twitter.com/salinger001101">
+	      @salinger001101
+	    </Link>
+	  </p>
 	</div>
 	
 	<div className="break-words mx-1 my-1 text-base">

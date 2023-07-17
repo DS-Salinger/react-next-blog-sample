@@ -67,26 +67,48 @@ const PostsContainer = (
   )
 }
 
-type StaticContentProps = {
+type AuthorContentProps = {
   title: string,
-  height: number,
   children: React.ReactNode
 }
 
-const StaticContent = (
-  { title, height, children }: StaticContentProps
+const AuthorContent = (
+  { title, children }: AuthorContentProps
 ) : react.FC => {
-  const heightString = "h-[" + height.toString() + "rem]"
   return (
     <>
-      <h2 className="col-span-2 sm:mb-0 md:-mb-5 mt-0
+      <h2 className="col-span-2 sm:mb-4 md:-mb-8
 		     text-white text-3xl mx-2">
         {title}
       </h2>
       
-      <div className={`col-span-2 mx-2 sm:my-6 md:my-0
-                       text-white bg-mygray bg-opacity-10
-                       ${heightString}`}>
+      <div className="col-span-2 mx-2 
+		      sm:mb-4 md:mb-0 md:mt-4 h-[23rem]
+                      text-white bg-mygray bg-opacity-10">
+	{children}
+      </div>
+    </>
+  )
+}
+
+type AboutContentProps = {
+  title: string,
+  children: React.ReactNode
+}
+
+const AboutContent = (
+  { title, children }: AboutContentProps
+) : react.FC => {
+  return (
+    <>
+      <h2 className="col-span-2 sm:mb-4 md:-mb-5
+		     text-white text-3xl mx-2">
+        {title}
+      </h2>
+      
+      <div className="col-span-2 mx-2 md:mb-0
+		      sm:mb-8 md:mb-0 h-[22rem]
+                      text-white bg-mygray bg-opacity-10">
 	{children}
       </div>
     </>
@@ -110,20 +132,15 @@ const MainContents = (
 		      sm:grid-cols-1 md:grid-cols-2
 		      mx-8 gap-8">
 	<div className="grid grid-cols-2">
-	  <StaticContent title={"About"}
-			 height={21}
-			 children={<HomeAbout />}/>
-
-	  <StaticContent title={"Author"}
-			 height={24}
-			 children={<HomeAuthor />} />
+	    <AboutContent title={"About"}
+			  children={<HomeAbout />}/>
+	    <AuthorContent title={"Author"}
+			   children={<HomeAuthor />}/>
 	</div>
-	
-	<PostsContainer title={"New"}
-			posts={newPosts}
-			link={"/new"}/>
+	    <PostsContainer title={"New"}
+				  posts={newPosts}
+				  link={"/new"}/>
       </div>
-      
       <div className="grid
 		      sm:grid-cols-1 md:grid-cols-2
 		      gap-8 mb-4 mx-8">

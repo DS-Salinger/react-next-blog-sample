@@ -5,11 +5,11 @@ author:
   name: さりんじゃー
   picture: '/assets/author.png'
 coverImage:
-  url: '@@image@@/blog-starter.png'
-  width: 280
-  height: 210
+  url: '@@image@@/blog-starter-page.png'
+  width: 250
+  height: 200
 ogImage:
-  url: '@@image@@/blog-starter.png'
+  url: '@@image@@/blog-starter-page.png'
 tags:
   - 'Other'
   - 'React'
