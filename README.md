@@ -66,7 +66,7 @@
 │       │   ├── post-preview.tsx: TOPページの記事プレビュー表示部分のコンポーネント
 │       │   ├── post-title.tsx: 記事ページのタイトル表示部分のコンポーネント
 │       │   └── section-separator.tsx: セクションを区切る水平線のコンポーネント
-│       ├── firebase.json: Firebase関連の設定ファイル(今回は弄らない)
+│       ├── firebase.json: Firebase関連の設定ファイル
 │       ├── index.html: Firebaseの初期設定で生成される(今回は削除)
 │       ├── interfaces: 型定義を配置
 │       │   ├── author.ts: Authorの型定義
@@ -75,10 +75,10 @@
 │       │   ├── api.ts: 記事データを引っ張ってくるAPIを記載（今回はローカルファイルからReadするだけ）
 │       │   ├── constants.ts: 各種定数を定義
 │       │   └── markdownToHtml.ts: MarkdownをHTMLに変換するライブラリ
-│       ├── next-env.d.ts: TypeScriptのための設定ファイル(今回は弄らない)
-│       ├── node_modules: インストールされたJavaScript/TypeScriptライブラリの保存先(今回は弄らない)
+│       ├── next-env.d.ts: TypeScriptのための設定ファイル
+│       ├── node_modules: インストールされたJavaScript/TypeScriptライブラリの保存先
 │       ├── out: ビルドされた本番用ファイルの格納先(今回は弄らない)
-│       ├── package-lock.json: パッケージのバージョン管理のためのファイル(今回は弄らない)
+│       ├── package-lock.json: パッケージのバージョン管理のためのファイル
 │       ├── package.json: 必要なJavaScript/TypeScriptのパッケージを記載
 │       ├── pages
 │       │   ├── _app.tsx: すべてのページコンポーネントの初期化で使われるコンポーネント
@@ -86,12 +86,12 @@
 │       │   ├── index.tsx: アプリ全体のトップ画面
 │       │   └── posts
 │       │       └──[slug].tsx: 各記事の表示方法を記載
-│       ├── postcss.config.js: CSS関連のプラグイン(今回は弄らない)
+│       ├── postcss.config.js: CSS関連のプラグイン
 │       ├── public: ファイルをそのまま公開するものを配置
 │       │   ├── assets: ここ以下に著者、各ページの画像を配置
 │       │   └── favicon: Favicon 画像を配置
 │       ├── styles: CSS関連のファイルを配置
-│       │   └── index.css: Tailwind CSSの読込が記載されている(今回は弄らない)
+│       │   └── index.css: Tailwind CSSの読込が記載されている
 │       ├── tailwind.config.js: Tailwind CSS の設定ファイル
 │       └── tsconfig.json: TypeScriptに関する設定ファイル
 └── docker-compose.yml
@@ -141,7 +141,7 @@
 │       ├── lib
 │       │   ├── api.ts
 │       │   ├── constants.ts
-│       │   └── markdownToHtml.ts
+│       │   └── markdownToHtml.ts: Markdown 変換用モジュールの追加
 │       ├── next-env.d.ts
 │       ├── node_modules
 │       ├── out
@@ -167,5 +167,4 @@
 │       └── tsconfig.json
 └── docker-compose.yml
 ```
-
 
