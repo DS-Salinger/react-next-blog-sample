@@ -4,8 +4,11 @@ import CoverImage from './cover-image'
 import Link from 'next/link'
 import Post from '../interfaces/post'
 
-const PostPreview = ({ post }: { post: Post })
-		  : react.FC => {
+interface PostPreviewType {
+  post: Post;
+}
+
+const PostPreview: React.FC<PostPreviewType> = ({ post }: { post: Post }) => {
   return (
     <>      
       <div className="sm:col-span-2 md:col-span-1">

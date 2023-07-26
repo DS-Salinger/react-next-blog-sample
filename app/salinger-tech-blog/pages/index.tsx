@@ -19,9 +19,9 @@ type PostContainerProps = {
   link: string
 }
 
-const PostsContainer = (
+const PostsContainer: React.FC<PostContainerProps> = (
   { title, posts, link }: PostContainerProps
-): react.FC => {
+) => {
   const postNum = posts.length;
 
   return (
@@ -72,9 +72,9 @@ type AuthorContentProps = {
   children: React.ReactNode
 }
 
-const AuthorContent = (
+const AuthorContent: React.FC<AuthorContentProps> = (
   { title, children }: AuthorContentProps
-) : react.FC => {
+) => {
   return (
     <>
       <h2 className="col-span-2 sm:mb-4 md:-mb-8
@@ -96,9 +96,9 @@ type AboutContentProps = {
   children: React.ReactNode
 }
 
-const AboutContent = (
+const AboutContent: React.FC<AboutContentProps> = (
   { title, children }: AboutContentProps
-) : react.FC => {
+) => {
   return (
     <>
       <h2 className="col-span-2 sm:mb-4 md:-mb-5
@@ -123,9 +123,9 @@ type IndexProps = {
   otherPosts: Post[]
 }
 
-const MainContents = (
+const MainContents: React.FC<IndexProps> = (
   { newPosts, dsPosts, archPosts, nlpPosts, otherPosts}: IndexProps
-): react.FC => {
+) => {
   return (
     <>
       <div className="grid mt-10 mb-4
@@ -156,7 +156,8 @@ const MainContents = (
 		      sm:grid-cols-1 md:grid-cols-2
 		      gap-8 mb-2 mx-8">
 	<PostsContainer title={"NLP"}
-			posts={nlpPosts}/>
+			posts={nlpPosts}
+			link={"/nlp"}/>
 	<PostsContainer title={"Other"}
 			posts={otherPosts}
 			link={"/other"}/>
@@ -165,9 +166,9 @@ const MainContents = (
   );
 }
 
-const Index = (
+const Index: React.FC<IndexProps> = (
   { newPosts, dsPosts, archPosts, nlpPosts, otherPosts}: IndexProps
-): react.FC => {
+) => {
   const contents = <MainContents 
                      newPosts={newPosts}
                      dsPosts={dsPosts}

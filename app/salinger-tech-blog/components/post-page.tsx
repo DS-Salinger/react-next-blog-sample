@@ -1,25 +1,34 @@
 import Link from 'next/link'
-import Post from '../interface/post'
+import Post from '../interfaces/post'
 import PaginationPosts from '../components/pagination'
 
-const PostPage = ({ title, posts }:
-	       { title: string, posts: Post[] }): React.FC => {
+interface PostPageType {
+  title: string;
+  posts: Post[];
+}
+
+const PostPage: React.FC<PostPageType> = (
+  { title, posts }: { title: string, posts: Post[] }
+) => {
   return (
     <div className="min-h-screen">
       <div className="grid sm:grid-cols-1 md:grid-cols-1
 		      mx-8 gap-8 h-auto min-h-fit">
-	<PostsContainer title={title}
-			posts={posts}/>
+	<PostsContainer title={ title }
+			posts={ posts }/>
       </div>
     </div>
   );
 }
 
+interface PostContainerType {
+  title: string;
+  posts: Post[]; 
+}
 
-const PostsContainer = (
-  { title, posts }:{ title: string, posts: Post[] }
-): React.FC => {
-
+const PostsContainer: React.FC<PostContainerType> = (
+  { title, posts }:
+  { title: string, posts: Post[] }) => {
   return (
     <>
       <div className="grid sm:grid-cols-2 md:col-span-1">

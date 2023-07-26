@@ -4,7 +4,11 @@
 
 /* remark-flexible-code-title */
 div.remark-code-title {
-    @apply flex bg-mygray/20 w-min px-3 py-1 text-base;
+    @apply flex bg-mygray/20 w-max px-3 py-1 mt-4 text-base;
+}
+
+div.remark-code-container > pre {
+    @apply flex bg-black  flex overflow-x-auto;
 }
 
 /* remark-gfm task list */

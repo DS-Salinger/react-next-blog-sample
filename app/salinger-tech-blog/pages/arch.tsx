@@ -1,17 +1,16 @@
-import BaseFrame from '../components/base-frame'
-import PostPage from '../components/post-page'
+import PostsPage from '../components/posts-page'
+import Post from '../interfaces/post'
+import PostsPageType from '../interfaces/post-page'
 import { getTargetTagPosts } from '../lib/api'
 
-const ArchPostsPage = ({ archPosts }): React.FC => {
-  const contents = <PostPage title={"Architecture"}
-			     posts={archPosts} />;
-  return (
-    <>
-      <BaseFrame children={contents} />
-    </>
+const ArchPostsPage: React.FC<PostsPageType> = (props) => {
+  return(
+      <PostsPage
+	title={"Architecture"}
+	posts={props.posts} />
   );
 }
-
+  
 export const getStaticProps = async () => {
   const archPosts = getTargetTagPosts(
     "Architecture",
@@ -25,7 +24,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      archPosts: archPosts
+      posts: archPosts
     },
   }
 }

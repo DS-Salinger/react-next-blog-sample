@@ -1,10 +1,6 @@
 import Link from 'next/link'
-import ScreenSize from '../interfaces/screen-size'
 
-export default function Header(
-  { screenSize = 'pc-normal' }:
-  { screenSize: ScreenSize }): React.FC {
-
+const Header: React.FC = () => {
   return (
     <header className="h-12
 		       bg-myblack
@@ -12,3 +8,5 @@ export default function Header(
     </header>
   );
 }
+
+export default Header;

@@ -1,4 +1,4 @@
-const DummyPost = (): React.FC => {
+const DummyPost:React.FC = () => {
   return (
     <>
       <div className="sm:h-1 md:h-64 mx-2 mt-1

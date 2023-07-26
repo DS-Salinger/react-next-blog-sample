@@ -35,7 +35,7 @@
 
 /* コードブロック関連 */
 .markdown code {
-    @apply flex bg-black overflow-x-auto;
+    @apply bg-black /*flex overflow-x-auto */;
 }
 
 .markdown p > code {

@@ -1,17 +1,16 @@
-import BaseFrame from '../components/base-frame'
-import PostPage from '../components/post-page'
+import PostsPage from '../components/posts-page'
+import Post from '../interfaces/post'
+import PostsPageType from '../interfaces/post-page'
 import { getAllPosts } from '../lib/api'
 
-const NewPostsPage = ({ newPosts }): React.FC => {
-  const contents = <PostPage title={"New"}
-			     posts={newPosts} />;
-  return (
-    <>
-      <BaseFrame children={contents} />
-    </>
+const NewPostsPage: React.FC<PostsPageType> = (props) => {
+  return(
+      <PostsPage
+	title={"New"}
+	posts={props.posts} />
   );
 }
-
+  
 export const getStaticProps = async () => {
   const newPosts = getAllPosts(
     ['title',
@@ -24,7 +23,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      newPosts: newPosts
+      posts: newPosts
     },
   }
 }

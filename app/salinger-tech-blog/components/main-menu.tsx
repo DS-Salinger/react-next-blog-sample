@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const MainMenu = (): react.FC => {
+const MainMenu: React.FC = () => {
   return (
     <div className="bg-mygray bg-opacity-30 text-white
 		    h-[calc(100vh-62px)]

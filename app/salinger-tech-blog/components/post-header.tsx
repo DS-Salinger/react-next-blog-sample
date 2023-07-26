@@ -40,7 +40,7 @@ const PostHeader = (
 		       text-lg rounded px-4 py-2
 		       shadow-md"
 	    disabled
-	    key={title}>
+	    key={tag}>
       {tag}
     </button>
   )
