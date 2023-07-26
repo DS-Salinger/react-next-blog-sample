@@ -18,7 +18,9 @@ tags:
 
 ## 本記事について
 
-　自作ブログの Markdown 動作確認のための記事です。本ブログの環境構築と作成の流れに関しては [hoge](hoge) に記載しています。コードに関しては[https://github.com/DS-Salinger/salinger-tech-blog](https://github.com/DS-Salinger/salinger-tech-blog) に掲載しているので必要に応じて参照してください。Markdown から HTML への変換には Remark と Rehype を利用しています。変換処理部分は主に [markdownToHtml.ts](markdownToHtml.ts) に記載してます。CSS は [markdown-style.module.css](markdown-style.module.css)、[index.css](index.css)、[tailwind.config.js](tailwind.config.css)に記載しています。
+　自作ブログの Markdown 変換処理確認のための記事です。本ブログの環境構築と作成の流れに関しては 「[React + Next.js で自作ブログの作成 (1 .環境構築編)](/pages/20230712-create-my-blog-1)」 と 「[React + Next.js で自作ブログの作成 (2.テンプレートの改修)](/pages/20230714-create-my-blog-2)」 に記載しています。コードに関しては [https://github.com/DS-Salinger/salinger-tech-blog](https://github.com/DS-Salinger/salinger-tech-blog) に掲載しているので必要に応じて参照してください。Markdown から HTML への変換には Remark と Rehype を利用しています。変換処理部分は主に [markdownToHtml.ts](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/lib/markdownToHtml.ts) に記載してます。CSS は [markdown-style.module.css](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/components/markdown-styles.module.css)、[index.css](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/styles/index.css)、[tailwind.config.js](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/tailwind.config.js) に記載しています。
+
+　画像リンクなどの一部サンプルテキストについては [ZennのMarkdown記法一覧](https://zenn.dev/zenn/articles/markdown-guide) から記載内容をお借りしています。
 
 ## Markdown 変換のために用意した機能
 
@@ -165,10 +167,9 @@ const great = () => {
 
 # 数式
 
-Zenn では**KaTeX**による数式表示に対応しています。
-KaTeXのバージョンは常に最新バージョンを使用します。
+MathJax による数式表示に対応しています。
 
-[📄 KaTeXがサポートする記法の一覧 →](https://katex.org/docs/support_table.html)
+[📄 とほほのMathJax入門](https://www.tohoho-web.com/ex/mathjax.html)
 
 ## 数式のブロックを挿入する
 

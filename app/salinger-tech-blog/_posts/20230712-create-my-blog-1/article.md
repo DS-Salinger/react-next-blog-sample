@@ -1,5 +1,5 @@
 ---
-title: 'React + Next.js で自作ブログの作成 (1 .環境構築編)'
+title: 'React + Next.js で自作ブログの作成 (1.環境構築編)'
 date: '2023-07-13 00:30:00'
 author:
   name: さりんじゃー
@@ -21,37 +21,45 @@ tags:
 
 # はじめに
 
+## なぜ自作ブログを作るのか？
+
+　なんでも誰かがサービス化してくれているこのご時世に、何故わざわざ自分で1から作るのか？という話がよく出ますが、技術者として「1から自分で作る」というのは対象となる製品を理解する上でとても大事なステップです。本とか誰かが書いてくれている内容をそのままコピーして動かしてみるという一見簡単そうな内容でも、いざ自分でやってみると環境構築でエラーが発生し希望とおりに動かない、読んだときは理解していたつもりでも一部分をほんの少し書き換えて目的のものに近づけようとすると動いてほしいように動かない、ということが頻発します。一番勉強になるのはこういう目的通りに動かないものを不格好でもよいのでどうにかこうにかとりあえずは「動くようにする」という過程です。
+
+　筆者の専門でかつお仕事にしているのは、主にデータ分析や AI にかかわる領域ですが、何かを作ろうとしたときに自分がよく理解できていないものを誰かに頼んで作ってもらうとすると、情報のやり取りで大きなロスが出やすいので「多少は知っている」ものを増やしておくほうがスムーズなためフロントエンド側の知識もこのタイミングでちゃんと勉強し、なにか動くもの自分で作ってみようと思いました。
+
+　そこで対象として選んだのが学習した内容や試してみた技術をまとめるための自作ブログです。日常から自分で使う前提のもので、かつ静的なコンテンツがほとんど、バックエンド側も非常にシンプルな構成にできるため、フロントエンド側の技術キャッチアップのネタとして、フロント側の初学者がとりあえず作ってみるにはちょうどよい難易度です。また作り捨てにせずに適度に改修をしつつ、かつ長期間運用していく前提にもなるのでちゃんと運用の観点も考慮しながら作ることになるので、より実サービスに近い形の対象でもあると思います。
+
 ## 本記事について
 
 　React + Next.js 学習のために自作ブログを作ったときの諸々の備忘録です。Next.js 公式テンプレートの[blog-starter](https://vercel.com/templates/next.js/blog-starter-kit) をベースに構築しています。作成したコードに関しては[https://github.com/DS-Salinger/salinger-tech-blog](https://github.com/DS-Salinger/salinger-tech-blog) に掲載しているので必要に応じて参照してください。
 
-　今回の「①環境構築編」では関連する技術に関する情報のまとめと環境構築部分について記載しています。
+　今回の「1. 環境構築編」では関連する技術に関する情報のまとめと環境構築部分について記載しています。
 
-## 作成するブログで必要になる技術スタック
+## 作成する自作ブログで必要になる技術スタック
 
 　今回は下記の言語、フレームワーク、インフラを利用しました。
 
 - 開発言語： [TypeScript](https://www.typescriptlang.org/ja/)
-vv- フロントエンドフレームワーク: [React](https://ja.react.dev/)
+- フロントエンドフレームワーク: [React](https://ja.react.dev/)
 - バックエンドフレーム: [Next.js](https://nextjs.org/)
 - インフラ: [Firebaes](https://firebase.google.com/?hl=ja)
 
   
 ## 参考にした情報
 
-　言語とフレームワークに関して、筆者はフロントエンド関連の知識が大昔のHTML時代で止まっていたため、まず最近の HTML、CSS 関連の基礎知識、JavaScriptの基礎知識に関して [MDN](https://firebase.google.com/?hl=ja) の各ドキュメントを一通り読んで頭の中に最近の知識のインデックスを作りました。その後 [React 公式チュートリアル](https://ja.react.dev/learn) で React 関連の基礎知識を学習しましたが、英語の公式チュートリアルドキュメントが大幅刷新されたタイミングだったので、一部ドキュメントがまだ英語のままでしたが、ややこしい部分も翻訳ツールでなんとかなるレベルだと思います。TypeScript の学習に関しては [TypeScript Deep Dive 日本語版](https://typescript-jp.gitbook.io/deep-dive/)で今回のブログ構築に関して十分足りました。Next.js の学習は[公式のチュートリアル(英語)](https://nextjs.org/learn/foundations/about-nextjs) を一通りこなしました。こちらは英語のドキュメントのみですが、そこまで内容が難しくなかったので音訳ツールを使いながら進めればなんとかなると思います。
+　言語とフレームワークに関して、筆者はフロントエンド関連の知識が大昔の HTML メインで頑張る20年前で止まっていたため、まず最近の HTML、CSS 関連の基礎知識、JavaScriptの基礎知識に関して [MDN](https://firebase.google.com/?hl=ja) の各ドキュメントを一通り読んで頭の中にインデックスを作りました。その後 [React 公式チュートリアル](https://ja.react.dev/learn) で React 関連の基礎知識を学習しましたが、英語の公式チュートリアルドキュメントが大幅刷新されたタイミングだったので、一部ドキュメントがまだ英語のままでしたが、翻訳ツールとかも使いつつ読んでました。TypeScript の学習に関しては [TypeScript Deep Dive 日本語版](https://typescript-jp.gitbook.io/deep-dive/)で今回のブログ構築に関しては十分足りました。Next.js の学習は[公式のチュートリアル(英語)](https://nextjs.org/learn/foundations/about-nextjs) を一通りこなしました。こちらは英語のドキュメントのみですが、そこまで内容が難しくなかったので翻訳ツールを使いながら進めればなんとかなると思います。
 
-　環境構築部分に関しては miketako3 さんが記載した [エンジニアなら自分でブログを作れ！①導入編](https://zenn.dev/miketako3/articles/9b2b1a9ec13901) にほぼ準拠する形で実施しましたが、こちらの記事は M1 Mac かつパッケージ管理に yarn を利用していましたが、筆者は Win 11 ＋ Ubuntu 22.04 on WSL2 でパッケージ管理は npm を利用しています。上記記事では未検証のようでしたが、ほぼ同様の手順で問題なく実行できました。
+　環境構築部分に関しては miketako3 さんが記載した [エンジニアなら自分でブログを作れ！①導入編](https://zenn.dev/miketako3/articles/9b2b1a9ec13901) にほぼ準拠する形で実施しました。こちらの記事は M1 Mac かつパッケージ管理に yarn を利用していましたが、筆者は Win 11 ＋ Ubuntu 22.04 on WSL2 でパッケージ管理は npm を利用しています。上記記事では未検証のようでしたが、ほぼ同様の手順で問題なく実行できました。
 
 # 環境構築
 
 ## GitHub によるソースコード管理
 
-　GitHub上で新規リポジトリを作成しておく。今回はリポジトリ名を本ブログの名称 `salinger-tech-blog` としてこちらを Firebase のプロジェクト名にする。
+　GitHub 上で新規リポジトリを作成します。今回はリポジトリ名を本ブログの名称 `salinger-tech-blog` として、これをそのまま Firebase のプロジェクト名にもしています。
 
 ## Firebase によるインフラの構築
 
-　[Firebase 公式](https://console.firebase.google.com/u/0/?hl=ja) にアクセスすると下記の画面が表示される。
+　[Firebase 公式](https://console.firebase.google.com/u/0/?hl=ja) にアクセスすると下記の画面が表示されます。
 
 ![firebase1](@@image@@/firebase1.png)
 
@@ -92,7 +100,7 @@ Google Analytics がデフォルトで有効になるのでそのまま続行。
 
 ## Docker を利用した開発環境の構築とテンプレートの準備
 
-　Docker を利用して TypeScript、React、Next.js を利用して開発するための環境を構築する。任意の場所に作業用ディレクトリを作成し、下記2つのファイルを作成する。
+　Docker を利用して TypeScript、React、Next.js を利用して開発するための環境を構築します。任意の場所に作業用ディレクトリを作成し、下記2つのファイルを作成します。
 
 ```:Dockerfile
 FROM node:18.10.0-alpine
@@ -101,7 +109,7 @@ WORKDIR /app
 EXPOSE 3000
 
 RUN apk --update --no-cache add git openssh
-RUN npm install -g firebase-toolst
+RUN npm install -g firebase-tools
 ```
 
 ```:docker-compose.yaml
@@ -128,8 +136,8 @@ services:
 作業用ディレクトリで下記コマンドを実行し、作業用コンテナの作成＆起動を行う。
 
 ```bash
-$ mkdir react-next-blog-sample-docker
-$ cd salinger-tech-blog-docker
+$ mkdir salinger-tech-blog
+$ cd salinger-tech-blog
 $ docker build
 $ docker compose create
 $ docker compose start
@@ -315,13 +323,13 @@ $ firebase deploy
 - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_N\EXT_BLOG_SAMPLE }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_NEXT_BLOG_SAMPLE }}'
           channelId: live
-          projectId: react-next-blog-sample
+          projectId: salinger-tech-blog
           entryPoint: ./app/react-next-blog-sample
 ```
 
-ホスト側の `salinger-tech-blog-docker` に移動して下記コマンドを実行し自動生成された `.github` をプロジェクトの直下に移動しておく。
+ホスト側の `salinger-tech-blog` に移動して下記コマンドを実行し自動生成された `.github` をプロジェクトの直下に移動しておく。
 
 ```bash
 $ sudo mv app/salinger-tech-blog/.github .
