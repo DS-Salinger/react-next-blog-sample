@@ -84,7 +84,7 @@
 
 /* テーブル */
 .markdown table {
-    @apply table-auto p-2 mt-4 shadow-md;
+    @apply block mt-6 mb-6 text-base overflow-x-auto;
 }
 
 .markdown th {

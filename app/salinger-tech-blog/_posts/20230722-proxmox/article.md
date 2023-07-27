@@ -5,11 +5,11 @@ author:
   name: さりんじゃー
   picture: '/assets/author.png'
 coverImage:
-  url: '@@image@@/proxmox.png'
+  url: '@@image@@/proxmox-sq.png'
   width: 150
   height: 150
 ogImage:
-  url: '@@image@@/proxmox.png'
+  url: '@@image@@/proxmox-sq.png'
 tags:
   - 'Other'
   - 'Proxmox'
@@ -48,7 +48,7 @@ tags:
 | GPU        | CPU内蔵 -> MSI GeForce RTX 3060 AERO ITX 12G OC | 46,000円 |
 | LAN        | On-board                                        | -        |
 
-　主にコスパを考えて、比較的時間が経過してこなれた価格になっていて、かつ小型の X300 系チップセット搭載のベアボーン ASRock DeskMeet X300 を選択しました。買った当時 PCIe にはGPU、M.2 SSD 追加、10GbEなどを将来刺してなんらか拡張しょうかなと考えていましたが、長時間かかる機械学習系の処理を実行・検証するために 3060 を追加しました。
+　主にコスパを考えて、比較的時間が経過してこなれた価格になっていて、かつ小型の X300 系チップセット搭載のベアボーン ASRock DeskMeet X300 を選択しました。買った当時 PCIe には GPU、M.2 SSD 追加、10GbE などを将来刺してなんらか拡張しょうかなと考えていましたが、長時間かかる機械学習系の処理を実行・検証するために GeForce 3060 を追加しました。
 
 　CPU は複数の仮想マシンを同時に運用する前提で最低でも8コア16スレッドのものを考えていたのですが Ryzen 7 5700G がスペックと価格のバランスがよかったためこちらを選択しました。
 
@@ -66,7 +66,7 @@ tags:
 
 ## 初回起動まで
 
-　今回は PCI Passthrough を活用して、仮想マシンが直接 PCI デバイス(今回は GPU の Geforce 3060)を利用できるような形で設定を行います。この形であればほぼネイティブでの処理と変わらない実行速度を得ることができます。なお vGPU という1枚の GPU を仮想的に複数に分割して取り扱うような技術も世の中には存在ますが、今回は1つの仮想マシンにのみ1物理 GPU を割り当てることのみを考えます。
+　今回は PCI Passthrough を活用して、仮想マシンが直接 PCI デバイス(今回は GPU の GeForce 3060)を利用できるような形で設定を行います。この形であればほぼネイティブでの処理と変わらない実行速度を得ることができます。なお vGPU という1枚の GPU を仮想的に複数に分割して取り扱うような技術も世の中には存在ますが、今回は1つの仮想マシンにのみ1物理 GPU を割り当てることのみを考えます。
 
 　まずインストーラを書き込むための USB メモリを用意しておく必要があります。次に [公式 ISO Installer](https://www.proxmox.com/en/downloads/item/proxmox-ve-8-0-iso-installer) から ISO 形式のメディアをダウンロードします。そして [balenaEtcher](https://etcher.balena.io/) から「Windows X86|X64 PORTABLE」をダウンロードし ISO を適当なUSBメモリに書き込みます。その後組み立てたマシンに接続し、UEFI を起動して必要な設定を行います。
 
@@ -221,5 +221,5 @@ $ echo "blacklist nvidia*" >> /etc/modprobe.d/blacklist.conf
 
 # 参考資料
 
-参考：[GPUパススルーも簡単にできる仮想化プラットフォーム「Proxmox VE」](https://internet.watch.impress.co.jp/docs/column/shimizu/1442466.html)
+参考：[GPUパススルーも簡単にできる仮想化プラットフォーム「Proxmox VE」](https://internet.watch.impress.co.jp/docs/column/shimizu/1442466.html)  
 参考：[公式ドキュメント](https://pve.proxmox.com/pve-docs/chapter-sysadmin.html)

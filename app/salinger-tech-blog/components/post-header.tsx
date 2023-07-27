@@ -47,8 +47,8 @@ const PostHeader = (
 
   return (
     <div className="grid grid-cols-2
-		    sm:w-full md:w-[50rem]
-		    p-2">
+		    sm:w-full md:w-[58rem]
+		    p-6">
       <div className="col-span-2 
 		      justify-self-center place-item-center
 		      pt-4 pb-2 mb-8">

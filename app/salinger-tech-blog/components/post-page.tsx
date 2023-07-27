@@ -21,14 +21,15 @@ const PostPage: React.FC<PostPageType> = (
   );
 }
 
-interface PostContainerType {
+interface PostsContainerType {
   title: string;
   posts: Post[]; 
 }
 
-const PostsContainer: React.FC<PostContainerType> = (
+const PostsContainer: React.FC<PostsContainerType> = (
   { title, posts }:
-  { title: string, posts: Post[] }) => {
+  { title: string, posts: Post[] }
+) => {
   return (
     <>
       <div className="grid sm:grid-cols-2 md:col-span-1">

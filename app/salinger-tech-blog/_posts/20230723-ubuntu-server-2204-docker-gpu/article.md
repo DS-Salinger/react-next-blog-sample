@@ -5,11 +5,11 @@ author:
   name: さりんじゃー
   picture: '/assets/author.png'
 coverImage:
-  url: '@@image@@/.png'
-  width: 150
-  height: 150
+  url: '@@image@@/pytorch-logo.png'
+  width: 320
+  height: 120
 ogImage:
-  url: '@@image@@/hoge.png'
+  url: '@@image@@/pytorch-logo.png'
 tags:
   - 'Data Science'
   - 'Linux'
@@ -24,13 +24,11 @@ tags:
 
 ## 作業用のサーバを作成する理由
 
-　今回はデータ分析・AI 関連の計算を実行するための環境を作ります。
-
-計算用サーバを自宅に構築すると下記のようなメリットがあります。
+　今回はデータ分析・AI 関連の計算を実行するための環境を作ります。計算用サーバを自宅に構築すると下記のようなメリットがあります。
 
 - 長時間計算を実行しっぱなしにしてもメインマシンの作業に影響がない
    - 気軽に環境をリセットすることが可能
-   - クライアントPCが非力なノート PC でも重たい計算処理が実行可能
+   - クライアント PC が非力なノート PC でも重たい計算処理が実行可能
    - VPN で自宅ネットワークに接続できるようにするとカフェからでも GPU で計算可能
 - ある程度使うのであればクラウド環境よりも安い
    - 特に GPU サーバは利用料金がお高いので個人利用で立てっぱなしは厳しい
@@ -38,11 +36,11 @@ tags:
 - 自力で構築することでインフラ・運用まわりの知識がつく
 
 
-　インストール先環境ですが、前回の記事 [「Proxmox VE 8.0 によるホームラボ構築」](/posts/20230722-proxmox) で作成した PVE 環境に仮想マシンを作成してその上に構築しています。Ubuntu Server のインストール以降はほぼネイティブ環境上や一般的なクラウド環境でGPUがあるマシンに導入する場合と変わらないと思います。
+　インストール先環境ですが、前回の記事 [「Proxmox VE 8.0 によるホームラボ構築」](/posts/20230722-proxmox) で作成した PVE 環境に仮想マシンを作成してその上に構築しています。Ubuntu Server のインストール以降はほぼネイティブ環境上や一般的なクラウド環境で GPU があるマシンに導入する場合と変わらないと思います。
 
 ## インストールするツールについて
 
-　下記のものをデフォルトのツールとして一式インストールする。PyTorch、PyCaret、ONNX については別途詳細を後述する。
+　下記のものをデフォルトのツールとして一式インストールする。PyTorch、PyCaret、ONNX については別途詳細を後述します。
 
 - ソースコード管理: Git
 - ダウンロード: wget
@@ -66,7 +64,7 @@ tags:
 
 　DeepLearning 系モデリングを行うための Meta 社製フレームワークで、シェアは最近は Google社製の TensorFlow と同程度に見えますが、実際のところはどうなんでしょうか…？研究者は以前から PyTorch をよく利用しているため最新のモデルはこちらで実装されて出てくることが多いと思いますが、良いモデルはすぐに TensorFlow にも移植されるためどちらを選んでも大きな問題にはならないはずです。個人的な好みでこちらを利用しています。
 
-　GPUドライバとライブラリのインストールを全部自分で行うのは依存関係の解決が非常に面倒なんですが、最近は Docker を利用するとサクッと構築可能になっており、今回は NVIDIA が出している NVIDIA Container Toolkit を組み合わせて GPU を利用可能な環境を構築します。
+　GPU ドライバとライブラリのインストールを全部自分で行うのは依存関係の解決が非常に面倒なんですが、最近は Docker を利用するとサクッと構築可能になっており、今回は NVIDIA が出している NVIDIA Container Toolkit を組み合わせて GPU を利用可能な環境を構築します。
 
 参考： [PyTorch 公式](https://pytorch.org/)
 
@@ -82,7 +80,7 @@ tags:
 
 　 Open Neural Network eXchange の略で、PyTorch、TensorFlow、scikit-learn などで学習済みの（主に機械学習）モデルを可搬性の高い ONNX モデル形式に変換することで、別環境で利用することが可能になります。
 
-　MLOps 文脈でシステムの開発と運用が行いやすくなるだけでなく、Python 環境でよく使われるフレームワーク以外にも、MacOSXやiPhoneの CoreML、Android の NNAPI などモバイルデバイスのローカルで利用できるのでネイティブ系モバイルアプリに学習済みモデルを組み込めたり、制約条件の厳しいエッジコンピューティングで利用されるバックエンドなどでも利用可能だったりするので、より広い範囲で機械学習モデルによる予測、分類などを活用したシステムを作ることが可能になります。今後よりさまざまなデバイス上で機械学習系のツールが一般化していくなかで押さえておくべき技術のひとつです。
+　MLOps 文脈でシステムの開発と運用が行いやすくなるだけでなく、Python 環境でよく使われるフレームワーク以外にも、MacOSX や iPhone の CoreML、Android の NNAPI などモバイルデバイスのローカルで利用できるのでネイティブ系モバイルアプリに学習済みモデルを組み込めたり、制約条件の厳しいエッジコンピューティングで利用されるバックエンドなどでも利用可能だったりするので、より広い範囲で機械学習モデルによる予測、分類などを活用したシステムを作ることが可能になります。今後よりさまざまなデバイス上で機械学習系のツールが一般化していくなかで押さえておくべき技術のひとつです。
 
 参考： [ONNX 公式](https://onnx.ai/)
 
@@ -96,12 +94,12 @@ tags:
 - System -> Bios
    - Default (SeaBIOS) -> OVMF(UEFI)
 - System -> EFI Storage
-   - (空白) -> リストから選択（デフォでは1つのみしかないはず）
+   - (空白) -> リストから選択（前記事通りの設定では1つしかないはず）
 
 仮想マシン作成後にハードウェアの追加設定を行います。
 
-- Display: 標準VGA
-- PCI Device [下記画像参照]
+- Display: 標準 VGA
+- PCI Device [下記画像参照]:
    - Raw Device -> プルダウンで対象のGPUを選択
    - 詳細設定 -> PCI-Express にチェック
    
@@ -627,7 +625,7 @@ import pycaret
 pycaret.__version__
 ```
 
-`'3.0.4'`
+> '3.0.4'
 
 ```py
 # loading sample dataset from pycaret dataset module
@@ -636,7 +634,6 @@ data = get_data('diabetes')
 ```
 
 |   | Number... | Plasma... | Diastolic... | Triceps... | 2-Hour... | Body... | Diabetes... | Age... | Class... |
-|   |           |           |              |            |           |         |             |        |          |
 |---|-----------|-----------|--------------|------------|-----------|---------|-------------|--------|----------|
 | 0 | 6         | 148       | 72           | 35         | 0         | 33.6    | 0.627       | 50     | 1        |
 | 1 | 1         | 85        | 66           | 29         | 0         | 26.6    | 0.351       | 31     | 0        |
@@ -681,7 +678,7 @@ exp = ClassificationExperiment()
 type(exp)
 ```
 
-`pycaret.classification.oop.ClassificationExperiment`
+> pycaret.classification.oop.ClassificationExperiment
 
 ```
 # init setup on exp
@@ -710,7 +707,7 @@ exp.setup(data, target = 'Class variable', session_id = 123)
 | 17 | Experiment Name             | clf-default-name |
 | 18 | USI                         | a007             |
 
-<pycaret.classification.oop.ClassificationExperiment at 0x7f0599abef80>
+> <pycaret.classification.oop.ClassificationExperiment at 0x7f0599abef80>
 
 ```py
 # compare baseline models
@@ -760,14 +757,13 @@ exp.compare_models()
 | dummy    | Dummy Classifier                | 0.6518   | 0.5000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0130   |
 | svm      | SVM - Linear Kernel             | 0.5954   | 0.0000 | 0.3395 | 0.4090 | 0.2671 | 0.0720 | 0.0912 | 0.0110   |
 
-```
-LogisticRegression
-LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
-                   intercept_scaling=1, l1_ratio=None, max_iter=1000,
-                   multi_class='auto', n_jobs=None, penalty='l2',
-                   random_state=123, solver='lbfgs', tol=0.0001, verbose=0,
-                   warm_start=False)
-```
+
+>LogisticRegression
+>LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+>                   intercept_scaling=1, l1_ratio=None, max_iter=1000,
+>                   multi_class='auto', n_jobs=None, penalty='l2',
+>                   random_state=123, solver='lbfgs', tol=0.0001, verbose=0,
+>                   warm_start=False)
 
 ```py
 # plot confusion matrix
@@ -890,30 +886,26 @@ print('Finished Training')
 torch.save(net.state_dict(), './cifar_net.pth')
 ```
 
-```
-[1,  2000] loss: 2.177
-[1,  4000] loss: 1.923
-[1,  6000] loss: 1.743
-[1,  8000] loss: 1.596
-[1, 10000] loss: 1.513
-[1, 12000] loss: 1.463
-[2,  2000] loss: 1.404
-[2,  4000] loss: 1.369
-[2,  6000] loss: 1.351
-[2,  8000] loss: 1.341
-[2, 10000] loss: 1.307
-[2, 12000] loss: 1.301
-Finished Training
-```
+>[1,  2000] loss: 2.177
+>[1,  4000] loss: 1.923
+>[1,  6000] loss: 1.743
+>[1,  8000] loss: 1.596
+>[1, 10000] loss: 1.513
+>[1, 12000] loss: 1.463
+>[2,  2000] loss: 1.404
+>[2,  4000] loss: 1.369
+>[2,  6000] loss: 1.351
+>[2,  8000] loss: 1.341
+>[2, 10000] loss: 1.307
+>[2, 12000] loss: 1.301
+>Finished Training
 
 ここまでで PyCaret と PyTorch (GPU利用) が無事動作しているのが確認できました。
 
 
 # おわりに
 
-　データ分析・AI関連でインフラ周りの準備は一苦労することになりますが、1度ベースとなる構築方法を覚えてしまえば、あとはどこかが多少変わる程度なので、ここに内容が一通り理解できていれば環境構築で大きく困ることはないはずです。今回は PyTorch を利用していますが、TensorFlow の場合インストールするライブラリが多少変わるだけですし、GPU 周りのドライバや分析に利用するライブラリを更新する場合は Dockerfile を差分管理しておけばすぐに切り戻すことも可能です。
-
-　今後はこの環境で行った分析やライブラリの利用法などもまとめていきたいと考えています。
+　データ分析・AI関連でインフラ周りの準備は一苦労することになりますが、1度ベースとなる構築方法を覚えてしまえば、あとはどこかが多少変わる程度なので、ここに内容が一通り理解できていれば環境構築で大きく困ることはないはずです。今回は PyTorch を利用していますが、TensorFlow の場合インストールするライブラリが多少変わるだけですし、GPU 周りのドライバや分析に利用するライブラリを更新する場合は Dockerfile を差分管理しておけばすぐに切り戻すことも可能です。今後はこの環境で行った分析やライブラリの利用法などもまとめていきたいと考えています。
 
 
 # 参考資料

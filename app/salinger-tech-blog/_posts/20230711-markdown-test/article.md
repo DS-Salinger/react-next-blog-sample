@@ -18,7 +18,7 @@ tags:
 
 ## 本記事について
 
-　自作ブログの Markdown 変換処理確認のための記事です。本ブログの環境構築と作成の流れに関しては 「[React + Next.js で自作ブログの作成 (1 .環境構築編)](/pages/20230712-create-my-blog-1)」 と 「[React + Next.js で自作ブログの作成 (2.テンプレートの改修)](/pages/20230714-create-my-blog-2)」 に記載しています。コードに関しては [https://github.com/DS-Salinger/salinger-tech-blog](https://github.com/DS-Salinger/salinger-tech-blog) に掲載しているので必要に応じて参照してください。Markdown から HTML への変換には Remark と Rehype を利用しています。変換処理部分は主に [markdownToHtml.ts](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/lib/markdownToHtml.ts) に記載してます。CSS は [markdown-style.module.css](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/components/markdown-styles.module.css)、[index.css](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/styles/index.css)、[tailwind.config.js](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/tailwind.config.js) に記載しています。
+　自作ブログの Markdown 変換処理確認のための記事です。本ブログの環境構築と作成の流れに関しては 「[React + Next.js で自作ブログの作成 (1 .環境構築編)](/posts/20230712-create-my-blog-1)」 と 「[React + Next.js で自作ブログの作成 (2.テンプレートの改修)](/posts/20230714-create-my-blog-2)」 に記載しています。コードに関しては [https://github.com/DS-Salinger/salinger-tech-blog](https://github.com/DS-Salinger/salinger-tech-blog) に掲載しているので必要に応じて参照してください。Markdown から HTML への変換には Remark と Rehype を利用しています。変換処理部分は主に [markdownToHtml.ts](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/lib/markdownToHtml.ts) に記載してます。CSS は [markdown-style.module.css](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/components/markdown-styles.module.css)、[index.css](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/styles/index.css)、[tailwind.config.js](https://github.com/DS-Salinger/salinger-tech-blog/blob/main/app/salinger-tech-blog/tailwind.config.js) に記載しています。
 
 　画像リンクなどの一部サンプルテキストについては [ZennのMarkdown記法一覧](https://zenn.dev/zenn/articles/markdown-guide) から記載内容をお借りしています。
 
@@ -100,8 +100,6 @@ tags:
 ![altテキスト](https://storage.googleapis.com/zenn-user-upload/gxnwu3br83nsbqs873uibiy6fd43)
 
 このような形で埋め込まれる。
-
-![同ディレクトリの画像](@@image@@/markdown-icon.png)
 
 同ディレクトリの画像は 
 `[アットマーク2つ]image[アットマーク2つ]/hogehoge.png` で記事中に埋め込める。
