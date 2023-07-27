@@ -1,11 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 const HomeAuthor: React.FC = () => {
   return(
     <div className="grid grid-cols-3 p-2">
       <div className="col-span-1 h-40 pr-1 sm:mt-0 md:mt-4">
-	<Image src="/assets/author.png"
+	<img src="/assets/author.png"
 	       width={120} height={120} alt="Author pic"/>
       </div>
 
