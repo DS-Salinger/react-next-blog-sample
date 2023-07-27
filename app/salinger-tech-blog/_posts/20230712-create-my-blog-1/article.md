@@ -324,7 +324,7 @@ $ firebase deploy
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_NEXT_BLOG_SAMPLE }}'
           channelId: live
           projectId: salinger-tech-blog
-          entryPoint: ./app/react-next-blog-sample
+          entryPoint: ./app/salinger-tech-blog
 ```
 
 ホスト側の `salinger-tech-blog` に移動して下記コマンドを実行し自動生成された `.github` をプロジェクトの直下に移動しておきます。

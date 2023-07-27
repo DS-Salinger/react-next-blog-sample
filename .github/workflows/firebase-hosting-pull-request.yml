@@ -11,10 +11,9 @@ jobs:
       - uses: actions/checkout@v3
       - run: cd ./app/react-next-blog-sample && npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
-          with:
-  	    repoToken: '${{ secrets.GITHUB_TOKEN }}'
-            firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_NEXT_BLOG_SAMPLE }}'
-            channelId: live
-            projectId: salinger-tech-blog
-            entryPoint: ./app/salinger-tech-blog
-
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_NEXT_BLOG_SAMPLE }}'
+          channelId: live
+          projectId: salinger-tech-blog
+	  entryPoint: ./app/salinger-tech-blog
