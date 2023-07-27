@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: cd ./app/react-next-blog-sample && npm ci && npm run build
+      - run: cd ./app/salinger-tech-blog && npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_NEXT_BLOG_SAMPLE }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SALINGER_TECH_BLOG }}'
           channelId: live
           projectId: salinger-tech-blog
 	  entryPoint: ./app/salinger-tech-blog

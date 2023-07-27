@@ -316,15 +316,15 @@ $ firebase deploy
 　GitHub の main ブランチに変更がマージされたとき、自動で Firebase 上に変更が反映される仕組みをつくります。作成したテンプレートの各種ファイルに修正を加えていきます。まずこれまでの内容を `git add -> git commit` しておきます。 `.gitignore` に `.firebase` を追加します。`app/salinger-tech-blog/firebase-hosting-merge.yml` と `.github/workflows/firebase-hosting-pull-request.yml` の `run:` の部分を修正し、`with:` の部分の末尾に `entryPoint` を下記のように追加します。
 
 ```yml
-- run: cd ./app/react-next-blog-sample && npm ci && npm run build
+- run: cd ./app/salinger-tech-blog && npm ci && npm run build
 ...
 - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_NEXT_BLOG_SAMPLE }}'
-          channelId: live
-          projectId: salinger-tech-blog
-          entryPoint: ./app/salinger-tech-blog
+  with:
+    repoToken: '${{ secrets.GITHUB_TOKEN }}'
+    firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SALINGER_TECH_BLOG }}'
+    channelId: live
+    projectId: salinger-tech-blog
+    entryPoint: ./app/salinger-tech-blog
 ```
 
 ホスト側の `salinger-tech-blog` に移動して下記コマンドを実行し自動生成された `.github` をプロジェクトの直下に移動しておきます。
