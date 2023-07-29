@@ -23,13 +23,15 @@ const BaseFrame = ({ children }: Props) => {
 	    </div>
 	    
 	    <div className="col-span-4 lg:col-span-3">
-	      <h1 className="text-white sm:px-4
-			     text-6xl my-4 sm:mx-3 md:mx-6">
+	      <h1 className="text-white sm:px-0
+			     sm:text-4xl md:text-6xl
+			     my-6 sm:mx-3 md:mx-6">
+
 		<span className="bg-gradient-to-r
-				 flex
+				 flex pb-5
 				 from-myred via-myorange to-myyellow
-				 sm:bg-[length:71%_5px]
-				 md:bg-[length:45%_5px]
+				 sm:bg-[length:84.5%_5px]
+				 md:bg-[length:42.5%_5px]
 				 bg-left-bottom
 				 bg-no-repeat">
 		  <Link href="/">さりんじゃー's Tech Blog</Link>

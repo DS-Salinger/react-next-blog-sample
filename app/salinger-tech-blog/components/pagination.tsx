@@ -27,7 +27,7 @@ const PaginationPosts: React.FC<PaginationPostsType> = (
 	  .map((p) => <PostPreview post={p} key={p.slug} />)}
       </div>
 
-      <div className="text-white">
+      <div className="text-white mb-8">
 	<ReactPaginate
 	  pageCount={Math.ceil(posts.length / perPage)}
 	  marginPagesDisplayed={1}

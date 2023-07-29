@@ -28,7 +28,7 @@ const PostsContainer: React.FC<PostContainerProps> = (
     <div className="grid sm:grid-cols-2 md:col-span-1">
       <div className="col-span-2">
         <h2 className="col-span-2 text-white mb-6
-		       text-3xl mx-2">
+		       sm:text-3xl md:text-3xl mx-2">
           {title}
 	</h2>
         {postNum === 0 &&
@@ -83,7 +83,8 @@ const AuthorContent: React.FC<AuthorContentProps> = (
       </h2>
       
       <div className="col-span-2 mx-2 
-		      sm:mb-4 md:mb-0 md:mt-4 h-[23rem]
+		      sm:mb-4 md:mb-0 md:mt-4 
+		      sm:h-[28rem] md:h-[23rem]
                       text-white bg-mygray bg-opacity-10">
 	{children}
       </div>
@@ -107,7 +108,8 @@ const AboutContent: React.FC<AboutContentProps> = (
       </h2>
       
       <div className="col-span-2 mx-2 md:mb-0
-		      sm:mb-8 md:mb-0 h-[22rem]
+		      sm:mb-8 md:mb-0 
+		      sm:h-[24rem] md:h-[22rem]
                       text-white bg-mygray bg-opacity-10">
 	{children}
       </div>
@@ -130,7 +132,7 @@ const MainContents: React.FC<IndexProps> = (
     <>
       <div className="grid mt-10 mb-4
 		      sm:grid-cols-1 md:grid-cols-2
-		      mx-8 gap-8">
+		      sm:mx-0 md:mx-8 gap-8">
 	<div className="grid grid-cols-2">
 	    <AboutContent title={"About"}
 			  children={<HomeAbout />}/>
@@ -143,7 +145,7 @@ const MainContents: React.FC<IndexProps> = (
       </div>
       <div className="grid
 		      sm:grid-cols-1 md:grid-cols-2
-		      gap-8 mb-4 mx-8">
+		      gap-8 mb-4 sm:mx-0 md:mx-8">
 	<PostsContainer title={"DS"}
 			posts={dsPosts}
 			link={"/ds"}/>
@@ -154,7 +156,7 @@ const MainContents: React.FC<IndexProps> = (
       
       <div className="grid
 		      sm:grid-cols-1 md:grid-cols-2
-		      gap-8 mb-2 mx-8">
+		      gap-8 mb-10 sm:mx-0 md:mx-8">
 	<PostsContainer title={"NLP"}
 			posts={nlpPosts}
 			link={"/nlp"}/>

@@ -26,7 +26,7 @@ const PostPreview: React.FC<PostPreviewType> = ({ post }: { post: Post }) => {
 
 	<div className="h-32 mt-1 mb-4 mx-2
 			bg-mygray bg-opacity-10">
-	  <h3 className="text-2xl mb-3">
+	  <h3 className="sm:text-xl md:text-2xl mb-3">
 	    <div className="text-lg text-white mb-4 p-1">
               <DateFormatter dateString={post.date} />
 	    </div>
@@ -34,7 +34,7 @@ const PostPreview: React.FC<PostPreviewType> = ({ post }: { post: Post }) => {
 	    <Link
               as={`/posts/${post.slug}`}
               href="/posts/[slug]"
-              className="hover:underline flex text-white p-1">
+              className="md:hover:underline flex text-white p-1">
               {post.title}
             </Link>
 	  </h3>

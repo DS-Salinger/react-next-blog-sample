@@ -241,7 +241,7 @@ module.exports = {
       },
     },
     screens: {
-      sm: '480px',
+      sm: '320px',
       md: '768px',
       lg: '1024px',
     },
@@ -272,30 +272,32 @@ const BaseFrame = ({ children }: Props) => {
         </Head>
 
         <Container>
-          <div className="grid grid-cols-4">
-	        <div className="hidden lg:grid lg:col-span-1 py-4">
-	          <MainMenu />
-	        </div>
+	  <div className="grid grid-cols-4">
+	    <div className="hidden lg:grid lg:col-span-1 py-4">
+	      <MainMenu />
+	    </div>
 	    
-	        <div className="col-span-4 lg:col-span-3">
-	          <h1 className="text-white sm:px-4
-			                 text-6xl my-4 sm:mx-3 md:mx-6">
-                <span className="bg-gradient-to-r
-			                     flex
-                                 from-myred via-myorange to-myyellow
-                                 sm:bg-[length:71%_5px]
-                                 md:bg-[length:45%_5px]
-                                 bg-left-bottom
-                                 bg-no-repeat">
-                  <Link href="/">さりんじゃー's Tech Blog</Link>
-		        </span>
-	          </h1>
-	          {children}
-	        </div>
-	      </div>
+	    <div className="col-span-4 lg:col-span-3">
+	      <h1 className="text-white sm:px-0
+			     sm:text-4xl md:text-6xl
+			     my-6 sm:mx-3 md:mx-6">
+		<span className="bg-gradient-to-r
+				 flex pb-5
+				 from-myred via-myorange to-myyellow
+				 sm:bg-[length:84.5%_5px]
+				 md:bg-[length:42.5%_5px]
+				 bg-left-bottom
+				 bg-no-repeat">
+		  <Link href="/">さりんじゃー's Tech Blog</Link>
+		</span>
+	      </h1>
+	      {children}
+	    </div>
+	  </div>
         </Container>
       </Layout>
     </>
+
   );
 }
 
@@ -308,8 +310,8 @@ export default BaseFrame
 <span className="bg-gradient-to-r
 				 flex
 				 from-myred via-myorange to-myyellow
-				 sm:bg-[length:71%_5px]
-				 md:bg-[length:45%_5px]
+				 sm:bg-[length:86%_5px]
+				 md:bg-[length:43%_5px]
 				 bg-left-bottom
 				 bg-no-repeat">
   <Link href="/">さりんじゃー's Tech Blog</Link>
@@ -504,7 +506,7 @@ const PostsContainer: React.FC<PostContainerProps> = (
     <div className="grid sm:grid-cols-2 md:col-span-1">
       <div className="col-span-2">
         <h2 className="col-span-2 text-white mb-6
-                       text-3xl mx-2">
+                       sm:text-3xl md:text-3xl mx-2">
           {title}
 	    </h2>
         {postNum === 0 &&
@@ -558,7 +560,8 @@ const AuthorContent: React.FC<AuthorContentProps> = (
       </h2>
       
       <div className="col-span-2 mx-2 
-		              sm:mb-4 md:mb-0 md:mt-4 h-[23rem]
+		              sm:mb-4 md:mb-0 md:mt-4
+					  sm:h-[23rem] md:h-[23rem]
                       text-white bg-mygray bg-opacity-10">
         {children}
       </div>
@@ -582,7 +585,8 @@ const AboutContent: React.FC<AboutContentProps> = (
       </h2>
       
       <div className="col-span-2 mx-2 md:mb-0
-		              sm:mb-8 md:mb-0 h-[22rem]
+		              sm:mb-8 md:mb-0
+					  sm:h-[24rem] md:h-[22rem]
                       text-white bg-mygray bg-opacity-10">
 	    {children}
       </div>
@@ -605,7 +609,7 @@ const MainContents: React.FC<IndexProps> = (
     <>
       <div className="grid mt-10 mb-4
 		              sm:grid-cols-1 md:grid-cols-2
-		              mx-8 gap-8">
+		              sm:mx-0 md:mx-8 gap-8">
 	    <div className="grid grid-cols-2">
 	      <AboutContent title={"About"}
 		                children={<HomeAbout />}/>
@@ -618,7 +622,7 @@ const MainContents: React.FC<IndexProps> = (
       </div>
       <div className="grid
 		              sm:grid-cols-1 md:grid-cols-2
-		              gap-8 mb-4 mx-8">
+		              gap-8 mb-4 sm:mx-0 md:mx-8">
 	    <PostsContainer title={"DS"}
 		                posts={dsPosts}
 			            link={"/ds"}/>
@@ -628,7 +632,7 @@ const MainContents: React.FC<IndexProps> = (
       </div>
       <div className="grid
 		              sm:grid-cols-1 md:grid-cols-2
-		              gap-8 mb-2 mx-8">
+		              gap-8 mb-2 sm:mx-0 md:mx-8">
 	    <PostsContainer title={"NLP"}
 		                posts={nlpPosts}
 	                    link={"/nlp"}/>
@@ -783,13 +787,13 @@ const PaginationPosts: React.FC<PaginationPostsType> = (
   return (
     <>
       <div className="grid sm:grid-cols-2 md:col-span-1">
-        {posts
-	      .slice(offset, offset + perPage)
-	      .map((p) => <PostPreview post={p} key={p.slug} />)}
+	{posts
+	  .slice(offset, offset + perPage)
+	  .map((p) => <PostPreview post={p} key={p.slug} />)}
       </div>
 
-      <div className="text-white">
-        <ReactPaginate
+      <div className="text-white mb-8">
+	    <ReactPaginate
 	      pageCount={Math.ceil(posts.length / perPage)}
 	      marginPagesDisplayed={1}
 	      pageRangeDisplayed={3}
@@ -811,7 +815,6 @@ const PaginationPosts: React.FC<PaginationPostsType> = (
 }
 
 export default PaginationPosts;
-
 ```
 
 

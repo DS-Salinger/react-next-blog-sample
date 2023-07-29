@@ -13,7 +13,7 @@ const PostPage: React.FC<PostPageType> = (
   return (
     <div className="min-h-screen">
       <div className="grid sm:grid-cols-1 md:grid-cols-1
-		      mx-8 gap-8 h-auto min-h-fit">
+		      sm:mx-0 md:mx-8 gap-8 h-auto min-h-fit">
 	<PostsContainer title={ title }
 			posts={ posts }/>
       </div>
@@ -35,9 +35,10 @@ const PostsContainer: React.FC<PostsContainerType> = (
       <div className="grid sm:grid-cols-2 md:col-span-1">
 	<div className="col-span-2">
           <h2 className="col-span-2 text-white
-			 text-3xl my-2 mx-2 h-fit">
+			 text-3xl 
+			 my-2 mx-2 h-fit">
             <Link href="/"
-		  className="hover:underline">Home
+		  className="sm:underline md:hover:underline">Home
 	    </Link> / { title }
 	  </h2>
 	</div>

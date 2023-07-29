@@ -37,7 +37,7 @@ const PostHeader = (
 ) => {
   const tagButtons = tags.map((tag) =>
     <button className="bg-mygray/20 text-white
-		       text-lg rounded px-4 py-2
+		       text-lg rounded sm:px-0 md:px-4 py-2
 		       shadow-md"
 	    disabled
 	    key={tag}>
