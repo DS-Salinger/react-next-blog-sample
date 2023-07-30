@@ -108,7 +108,7 @@ const AboutContent: React.FC<AboutContentProps> = (
       </h2>
       
       <div className="col-span-2 mx-2 md:mb-0
-		      sm:mb-8 md:mb-0 
+		      sm:mb-8 md:mb-0
 		      sm:h-[24rem] md:h-[22rem]
                       text-white bg-mygray bg-opacity-10">
 	{children}
@@ -130,9 +130,9 @@ const MainContents: React.FC<IndexProps> = (
 ) => {
   return (
     <>
-      <div className="grid mt-10 mb-4
+      <div className="grid mt-10 mb-4 
 		      sm:grid-cols-1 md:grid-cols-2
-		      sm:mx-0 md:mx-8 gap-8">
+		      mx-0 sm:mx-0 md:mx-8 gap-8">
 	<div className="grid grid-cols-2">
 	    <AboutContent title={"About"}
 			  children={<HomeAbout />}/>

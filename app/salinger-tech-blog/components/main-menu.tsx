@@ -3,6 +3,7 @@ import Link from 'next/link'
 const MainMenu: React.FC = () => {
   return (
     <div className="bg-mygray bg-opacity-30 text-white
+		    w-0 lg:w-[22rem]
 		    h-[calc(100vh-62px)]
 		    overflow-auto rounded-2xl
 		    shadow-lg sticky top-10">
