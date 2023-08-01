@@ -241,9 +241,9 @@ module.exports = {
       },
     },
     screens: {
-      sm: '320px',
-      md: '768px',
-      lg: '1024px',
+      sm: '28rem',
+      md: '60rem',
+      lg: '86rem',
     },
   },
   plugins: [require('@tailwindcss/forms')],
@@ -272,32 +272,35 @@ const BaseFrame = ({ children }: Props) => {
         </Head>
 
         <Container>
-	  <div className="grid grid-cols-4">
-	    <div className="hidden lg:grid lg:col-span-1 py-4">
-	      <MainMenu />
-	    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-4
+		                  md-auto
+						  w-[28rem] md:w-[60rem] lg:w-[86rem]">
+	        <div className="hidden lg:grid lg:col-span-1 py-4
+			                sm:w-0 lg:w-[20rem]">
+	          <MainMenu />
+	        </div>
 	    
-	    <div className="col-span-4 lg:col-span-3">
-	      <h1 className="text-white sm:px-0
-			     sm:text-4xl md:text-6xl
-			     my-6 sm:mx-3 md:mx-6">
-		<span className="bg-gradient-to-r
-				 flex pb-5
-				 from-myred via-myorange to-myyellow
-				 sm:bg-[length:84.5%_5px]
-				 md:bg-[length:42.5%_5px]
-				 bg-left-bottom
-				 bg-no-repeat">
-		  <Link href="/">さりんじゃー's Tech Blog</Link>
-		</span>
-	      </h1>
-	      {children}
-	    </div>
-	  </div>
+	      <div className="col-span-1 lg:col-span-3
+		                  w-[28rem] md:w-[60rem] lg:w-[60rem]">
+	        <h1 className="text-white sm:px-0
+			               sm:text-3xl md:text-6xl
+                           my-6 sm:mx-3 md:mx-6">
+		      <span className="bg-gradient-to-r
+			                   flex pb-5
+		                       from-myred via-myorange to-myyellow
+				               sm:bg-[length:22.2rem_5px]
+				               md:bg-[length:32.5rem_5px]
+				               bg-left-bottom
+				               bg-no-repeat">
+	            <Link href="/">さりんじゃー's Tech Blog</Link>
+		      </span>
+	        </h1>
+	        {children}
+	        </div>
+	      </div>
         </Container>
       </Layout>
     </>
-
   );
 }
 
@@ -308,10 +311,10 @@ export default BaseFrame
 
 ```tsx
 <span className="bg-gradient-to-r
-				 flex
-				 from-myred via-myorange to-myyellow
-				 sm:bg-[length:86%_5px]
-				 md:bg-[length:43%_5px]
+                 flex pb-5
+		         from-myred via-myorange to-myyellow
+				 sm:bg-[length:22.2rem_5px]
+				 md:bg-[length:32.5rem_5px]
 				 bg-left-bottom
 				 bg-no-repeat">
   <Link href="/">さりんじゃー's Tech Blog</Link>
@@ -505,8 +508,9 @@ const PostsContainer: React.FC<PostContainerProps> = (
   return (
     <div className="grid sm:grid-cols-2 md:col-span-1">
       <div className="col-span-2">
-        <h2 className="col-span-2 text-white mb-6
-                       sm:text-3xl md:text-3xl mx-2">
+        <h2 className="col-span-2 text-white mb-2
+                       h-10
+					   text-3xl mx-2">
           {title}
 	    </h2>
         {postNum === 0 &&
@@ -554,14 +558,16 @@ const AuthorContent: React.FC<AuthorContentProps> = (
 ) => {
   return (
     <>
-      <h2 className="col-span-2 sm:mb-4 md:-mb-8
-		             text-white text-3xl mx-2">
-        {title}
-      </h2>
-      
-      <div className="col-span-2 mx-2 
-		              sm:mb-4 md:mb-0 md:mt-4
-					  sm:h-[23rem] md:h-[23rem]
+	  <div className="mt-8">
+        <h2 className="grid col-span-2
+	                   h-10 mb-2 md:mb-0
+                       text-white text-3xl mx-2">
+          {title}
+        </h2>
+      </div>
+	  
+      <div className="grid col-span-2 mx-2 mt-0 md:-mt-2 mb-1 
+					  h-[25rem]
                       text-white bg-mygray bg-opacity-10">
         {children}
       </div>
@@ -579,14 +585,16 @@ const AboutContent: React.FC<AboutContentProps> = (
 ) => {
   return (
     <>
-      <h2 className="col-span-2 sm:mb-4 md:-mb-5
-		             text-white text-3xl mx-2">
-        {title}
-      </h2>
-      
-      <div className="col-span-2 mx-2 md:mb-0
-		              sm:mb-8 md:mb-0
-					  sm:h-[24rem] md:h-[22rem]
+	  <div className="mb-2">
+        <h2 className="col-span-2 mb-2 md:-mb-5
+		               h-10
+  	                   text-white text-3xl mx-2">
+          {title}
+        </h2>
+      </div>
+	  
+      <div className="grid col-span-2 mx-2
+                      h-80
                       text-white bg-mygray bg-opacity-10">
 	    {children}
       </div>
@@ -1082,15 +1090,18 @@ export default async function markdownToHtml(
 　ライブラリの読込に関して、Emacs の設定ファイルなどでも使われる Lisp 言語のシンタックスはデフォルトで読み込まれないので `import langLisp from 'highlight.js/lib/languages/lisp'` と記述して別途 import しています。また `.use(rehypeHighlight)` の引数にで import したものを `language` に追記しています。`ignoreMissing` に関しては指定したものなかった場合、エラーにせずデフォルトの書式で出力するオプションです。注意点として remark-rehype と rehype-stringify に `{ allowDangerousHtml: true }` を指定しないと変換時に HTML タグを削除してしまい正しく動作しないので注意です。
 
 ```js
+    ...
     .use(remarkRehype,
 	  { allowDangerousHtml: true })
     .use(rehypeStringify,
       { allowDangerousHtml: true })
+	...
 ```
 
 　ここまでで HTML タグへの変換とコード部分の色付けは完了です。ファイル名の表示に関しては `app/salinger-tech-blog/styles/index.css` で指定している下記の部分で調整可能です。`remark-code-container` クラスをもつ div タグがファイル名とコードの部分を包む外側の div タグで、ファイル名はその内側の remark-code-title クラスを持つ div タグが対応しています。 
 
 ```css:app/salinger-tech-blog/styles/index.css
+...
 /* remark-flexible-code-title */
 div.remark-code-title {
     @apply flex bg-mygray/20 w-max px-3 py-1 mt-4 text-base;

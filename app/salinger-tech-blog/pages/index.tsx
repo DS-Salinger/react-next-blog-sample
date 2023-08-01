@@ -27,8 +27,9 @@ const PostsContainer: React.FC<PostContainerProps> = (
   return (
     <div className="grid sm:grid-cols-2 md:col-span-1">
       <div className="col-span-2">
-        <h2 className="col-span-2 text-white mb-6
-		       sm:text-3xl md:text-3xl mx-2">
+        <h2 className="col-span-2 text-white mb-2
+		       h-10
+		       text-3xl mx-2">
           {title}
 	</h2>
         {postNum === 0 &&
@@ -77,14 +78,16 @@ const AuthorContent: React.FC<AuthorContentProps> = (
 ) => {
   return (
     <>
-      <h2 className="col-span-2 sm:mb-4 md:-mb-8
-		     text-white text-3xl mx-2">
-        {title}
-      </h2>
+      <div className="mt-8">
+	<h2 className="grid col-span-2
+		       h-10 mb-2 md:mb-0 
+		       text-white text-3xl mx-2">
+          {title}
+	</h2>
+      </div>
       
-      <div className="col-span-2 mx-2 
-		      sm:mb-4 md:mb-0 md:mt-4 
-		      sm:h-[28rem] md:h-[23rem]
+      <div className="grid col-span-2 mx-2 mt-0 md:-mt-2 mb-1
+		      h-[25rem]
                       text-white bg-mygray bg-opacity-10">
 	{children}
       </div>
@@ -102,14 +105,15 @@ const AboutContent: React.FC<AboutContentProps> = (
 ) => {
   return (
     <>
-      <h2 className="col-span-2 sm:mb-4 md:-mb-5
-		     text-white text-3xl mx-2">
-        {title}
-      </h2>
-      
-      <div className="col-span-2 mx-2 md:mb-0
-		      sm:mb-8 md:mb-0
-		      sm:h-[24rem] md:h-[22rem]
+      <div className="mb-2">
+	<h2 className="col-span-2 mb-2 md:-mb-5
+		       h-10
+		       text-white text-3xl mx-2">
+          {title}
+	</h2>
+      </div>
+      <div className="grid col-span-2 mx-2
+		      h-80
                       text-white bg-mygray bg-opacity-10">
 	{children}
       </div>
@@ -138,10 +142,14 @@ const MainContents: React.FC<IndexProps> = (
 			  children={<HomeAbout />}/>
 	    <AuthorContent title={"Author"}
 			   children={<HomeAuthor />}/>
+	    <div className="flex">
+	      <p></p>
+	    </div>
 	</div>
-	    <PostsContainer title={"New"}
-				  posts={newPosts}
-				  link={"/new"}/>
+	
+	<PostsContainer title={"New"}
+			posts={newPosts}
+			link={"/new"}/>
       </div>
       <div className="grid
 		      sm:grid-cols-1 md:grid-cols-2
