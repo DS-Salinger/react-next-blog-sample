@@ -36,8 +36,8 @@ const PostHeader = (
   { title, coverImage, date, author, tags }: Props
 ) => {
   const tagButtons = tags.map((tag) =>
-    <button className="bg-mygray/20 text-white
-		       text-lg rounded sm:px-0 md:px-4 py-2
+    <button className="bg-mygray/20 text-white m-1
+		       text:lg rounded px-1 py-1
 		       shadow-md"
 	    disabled
 	    key={tag}>
@@ -69,15 +69,18 @@ const PostHeader = (
 	<PostTitle>{title}</PostTitle>
       </div>
       
-      <div className="flex col-span-2 pb-6 gap-x-2">
+      <div className="flow-root col-span-2 pb-6">
 	{tagButtons}
       </div>
 
-      <div className="mb-6 text-lg col-span-1 p-2">
+      <div className="mb-6 col-span-2 md:col-span-1 p-2">
         <Avatar name={author.name} picture={author.picture} />
       </div>
-      <div className="flex pb-6 m-2
-		      text-xl col-span-1
+      <div className="flex pb-0 md:pb-6 
+		      m-2
+		      -mt-4 md:mt-0
+		      -mb-6 md:mb-0
+		      text-xl md:text-xl col-span-2 md:col-span-1
 		      items-center justify-end">
         <DateFormatter dateString={date} />
       </div>
