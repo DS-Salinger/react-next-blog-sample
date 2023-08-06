@@ -36,6 +36,7 @@ const Meta = () => {
         content="本サイトは筆者の構築した環境・実験・取得した技術に関する備忘録です。メイントピックはデータ分析、自然言語処理、建築 × IT です。"
       />
       <meta property="og:image" content="/public/assets/author.png" />
+      <meta name="google-site-verification" content="EwR0KhffU5igdd0t3zT7TnlJ0tNEd8ULtbvQ-3pSlNw" />
     </Head>
   )
 }
