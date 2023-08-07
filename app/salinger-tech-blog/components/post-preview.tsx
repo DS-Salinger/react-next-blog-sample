@@ -26,7 +26,7 @@ const PostPreview: React.FC<PostPreviewType> = ({ post }: { post: Post }) => {
 
 	<div className="h-32 mt-1 mb-4 mx-2
 			bg-mygray bg-opacity-10">
-	  <h3 className="sm:text-xl md:text-2xl mb-3">
+	  <h3 className="sm:text-xl md:text-xl mb-3">
 	    <div className="text-lg text-white mb-4 p-1">
               <DateFormatter dateString={post.date} />
 	    </div>
