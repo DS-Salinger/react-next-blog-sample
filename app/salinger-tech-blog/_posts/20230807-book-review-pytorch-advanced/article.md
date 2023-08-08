@@ -106,7 +106,9 @@ tags:
 
 　Deep Learning の入門書を読んで多少自分でも試してみた人がステップアップのために次に読む本としてよい本でした。データ分析・AI系の実業務に多少触れており、Deep Learning 系のモデルに関する知識を深めてより業務の幅を広げてみたい方はぜひ1度読んでみてください。
 
-<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=FFFFFF&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4839970254&linkId=ca37100cca961b545952a37c508f62ec"></iframe>
+<center>
+  <iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=FFFFFF&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=4839970254&linkId=ca37100cca961b545952a37c508f62ec"></iframe>
+</center>
 
 # 参考資料
 
