@@ -59,10 +59,14 @@ const PostHeader = (
       </div>
       <div className="col-span-2 text-xl">
 	<Link href="/"
-	      className="hover:underline">Home</Link>
-	&nbsp; / &nbsp; 
-	<Link href={"/" + convertTagToPath(tags[0])}
-	      className="hover:underline">{tags[0]}</Link>
+	      passHref legacyBehavior>
+	  <a className="hover:underline">Home</a>
+	</Link>
+        &nbsp; / &nbsp; 
+        <Link href={"/" + convertTagToPath(tags[0])}
+	      passHref legacyBehavior>
+	  <a className="hover:underline">{tags[0]}</a>
+	</Link>
       </div>
       
       <div className="grid col-span-2 -mb-4">

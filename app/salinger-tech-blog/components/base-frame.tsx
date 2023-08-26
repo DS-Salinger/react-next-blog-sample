@@ -40,7 +40,10 @@ const BaseFrame = ({ children }: Props) => {
 				 md:bg-[length:32.5rem_5px]
 				 bg-left-bottom
 				 bg-no-repeat">
-		  <Link href="/">さりんじゃー's Tech Blog</Link>
+		  <Link href="/"
+			passHref legacyBehavior>
+		    <a>さりんじゃー's Tech Blog</a>
+		  </Link>
 		</span>
 	      </h1>
 	      {children}

@@ -8,8 +8,8 @@ const MainMenu: React.FC = () => {
 		    shadow-lg sticky top-10">
       <div className="mx-8 mt-8 text-3xl">
 	<Link href="/"
-	      className="hover:underline">
-	  Home
+	      passHref legacyBehavior>
+	  <a className="hover:underline">Home</a>
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
@@ -20,32 +20,32 @@ const MainMenu: React.FC = () => {
       </div>
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/new"
-	      className="hover:underline">
-	  New
+	      passHref legacyBehavior>
+	  <a className="hover:underline">New</a>
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/ds"
-	      className="hover:underline">
-	  Data Science
+	      passHref legacyBehavior>
+	  <a className="hover:underline">Data Science</a>
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/nlp"
-	      className="hover:underline">
-	  NLP
+	      passHref legacyBehavior>
+	  <a className="hover:underline">NLP</a>
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/arch"
-	      className="hover:underline">
-	  Architecture
+	      passHref legacyBehavior>
+	  <a className="hover:underline">Architecture</a>
 	</Link>
       </div>
       <div className="mx-12 mt-4 text-2xl">
 	<Link href="/other"
-	      className="hover:underline">
-	  Other
+	      passHref legacyBehavior>
+	  <a className="hover:underline">Other</a>
 	</Link>
       </div>
     </div>

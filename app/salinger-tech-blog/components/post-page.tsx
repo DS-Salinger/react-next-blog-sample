@@ -38,7 +38,9 @@ const PostsContainer: React.FC<PostsContainerType> = (
 			 text-3xl 
 			 my-2 mx-2 h-fit">
             <Link href="/"
-		  className="sm:underline md:hover:underline">Home
+		  passHref legacyBehavior>
+		  
+	      <a className="sm:underline md:no-underline md:hover:underline">Home</a>
 	    </Link> / { title }
 	  </h2>
 	</div>

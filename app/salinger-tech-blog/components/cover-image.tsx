@@ -24,9 +24,10 @@ const CoverImage = (
     <div>
       {slug ? (
         <Link as={`/posts/${slug}`}
+	      passHref legacyBehavior
 	      href="/posts/[slug]"
 	      aria-label={title}>
-          {image}
+          <a>{image}</a>
         </Link>
       ) : (
         image

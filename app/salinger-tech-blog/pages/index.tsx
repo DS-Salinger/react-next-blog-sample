@@ -56,9 +56,9 @@ const PostsContainer: React.FC<PostContainerProps> = (
         {postNum >= 3 &&
           <div className="grid place-items-end mx-3">
 	    <Link href={link}
-	       className="text-lg text-myorange
-		     hover:underline">
-	      Read more
+		  passHref legacyBehavior
+		  className="text-lg text-myorange">
+	      <a className="text-myorange block hover:underline">Read more</a>
 	    </Link>
 	  </div>
 	}

@@ -13,8 +13,9 @@ const HomeAuthor: React.FC = () => {
           <h2 className="text-2xl">さりんじゃー</h2>
 	  <p className="text-base align-botom">
             &nbsp;X: &nbsp;
-            <Link className="text-myorange" href="https://twitter.com/salinger001101">
-	      @salinger001101
+            <Link passHref legacyBehavior
+		  href="https://twitter.com/salinger001101">
+	      <a className="text-myorange hover:underline">@salinger001101</a>
 	    </Link>
 	  </p>
 	</div>

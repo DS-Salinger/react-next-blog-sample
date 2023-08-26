@@ -34,8 +34,8 @@ const PostPreview: React.FC<PostPreviewType> = ({ post }: { post: Post }) => {
 	    <Link
               as={`/posts/${post.slug}`}
               href="/posts/[slug]"
-              className="md:hover:underline flex text-white p-1">
-              {post.title}
+	      passHref legacyBehavior>
+              <a className="text-white flex p-1 hover:underline">{post.title}</a>
             </Link>
 	  </h3>
 	</div>
